@@ -1,0 +1,500 @@
+/* ============================================================
+   জামালপুর ঐতিহ্য হাট — style.css
+   ------------------------------------------------------------
+   ডিজাইনের মূল রঙ (আগের ওয়েবসাইটের মতো — টেরাকোটা/মাটির রঙ):
+     ক্রিম ব্যাকগ্রাউন্ড   #fdf6eb
+     গাঢ় বাদামি লেখা     #3b2a1d
+     টেরাকোটা (মূল রঙ)    #b04e26
+     হালকা ক্রিম (কার্ড)   #fffcf5
+     সবুজ (অ্যাকসেন্ট)     #4a6b4e
+     বর্ডার               #e8d6bc
+   ফন্ট: Hind Siliguri (লেখা), Noto Serif Bengali (শিরোনাম)
+   অংশগুলোর ক্রম: ভ্যারিয়েবল → সাধারণ → হেডার → হিরো → সেকশন →
+   মিল্লি → পণ্য কার্ড → গল্প → যোগাযোগ → ফুটার → মডাল → রসিদ →
+   অ্যাডমিন টেবিল → টোস্ট → প্রিন্ট → মোবাইল
+   ============================================================ */
+
+/* ---------- ১. রঙের ভ্যারিয়েবল — রঙ বদলাতে চাইলে শুধু এখানে ---------- */
+:root {
+  --bg: #fdf6eb;              /* পুরো পেজের ব্যাকগ্রাউন্ড */
+  --fg: #3b2a1d;              /* সাধারণ লেখার রঙ */
+  --card: #fffcf5;            /* কার্ডের ব্যাকগ্রাউন্ড */
+  --primary: #b04e26;         /* মূল রঙ (বাটন, হেডলাইন) */
+  --primary-dark: #93401d;    /* মূল রঙের গাঢ় ছায়া (হোভার) */
+  --primary-fg: #fff7ec;      /* মূল রঙের ওপরের লেখা */
+  --secondary: #f3e3cb;       /* হালকা বাদামি (টেবিল হেড ইত্যাদি) */
+  --muted: #f5eadb;           /* ম্লান ব্যাকগ্রাউন্ড */
+  --muted-fg: #8a6b4f;        /* ম্লান লেখা */
+  --green: #4a6b4e;           /* সবুজ (হোয়াটসঅ্যাপ বাটন) */
+  --green-dark: #3d5840;
+  --border: #e8d6bc;          /* হালকা বর্ডার */
+  --danger: #b3261e;          /* লাল (মুছুন বাটন) */
+  --shadow: 0 4px 16px rgba(59, 42, 29, 0.08);
+  --shadow-lg: 0 12px 32px rgba(59, 42, 29, 0.16);
+  --radius: 14px;             /* কোণ গোল করার পরিমাণ */
+}
+
+/* ---------- ২. সাধারণ রিসেট ও বেস ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; } /* মেনু লিংকে মসৃণ স্ক্রল */
+
+body {
+  font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Noto Serif Bengali", "Hind Siliguri", serif;
+  line-height: 1.4;
+}
+
+img { max-width: 100%; display: block; }
+
+/* মূল কনটেইনার — সব সেকশনের চওড়া অংশ */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+/* বাটনের বেস স্টাইল */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: none; cursor: pointer; text-decoration: none;
+  font-family: inherit; font-size: 15px; font-weight: 600;
+  padding: 10px 18px; border-radius: 10px;
+  transition: all 0.2s ease;
+}
+.btn-primary { background: var(--primary); color: var(--primary-fg); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.btn-outline:hover { background: var(--primary); color: var(--primary-fg); }
+.btn-green { background: var(--green); color: #f2f7f0; }
+.btn-green:hover { background: var(--green-dark); }
+.btn-ghost { background: var(--secondary); color: #6b4a2e; }
+.btn-ghost:hover { background: #ecd9bd; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { opacity: 0.88; }
+.btn-glass { background: rgba(255, 247, 236, 0.12); color: #fff7ec; border: 1.5px solid rgba(255, 247, 236, 0.4); }
+.btn-glass:hover { background: rgba(255, 247, 236, 0.22); }
+.btn-sm { padding: 7px 14px; font-size: 14px; border-radius: 9px; }
+.btn-lg { padding: 13px 24px; font-size: 16px; }
+.btn-block { width: 100%; }
+
+/* ---------- ৩. হেডার ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(253, 246, 235, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner { display: flex; align-items: center; gap: 14px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); }
+.brand-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--primary); color: var(--primary-fg);
+  display: flex; align-items: center; justify-content: center;
+}
+.brand-icon svg { width: 20px; height: 20px; }
+.brand-text { line-height: 1.2; }
+.brand-bn { display: block; font-family: "Noto Serif Bengali", serif; font-weight: 700; font-size: 17px; }
+.brand-en { display: block; font-size: 11px; color: var(--muted-fg); }
+
+/* মেনু (ডেস্কটপে মাঝে, মোবাইলে লুকানো) */
+.main-nav { display: flex; gap: 4px; margin-left: auto; }
+.main-nav a {
+  padding: 8px 14px; border-radius: 9px; text-decoration: none;
+  color: var(--fg); font-weight: 500; font-size: 15px;
+}
+.main-nav a:hover { background: var(--secondary); }
+.header-phone { margin-left: 4px; }
+.nav-toggle {
+  display: none; margin-left: auto; background: none; border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px; color: var(--fg); cursor: pointer;
+}
+.nav-toggle svg { width: 22px; height: 22px; display: block; }
+
+/* ---------- ৪. হিরো ---------- */
+.hero { position: relative; height: 460px; overflow: hidden; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* ছবির ওপর গাঢ় ছায়া — লেখা পড়ার সুবিধার জন্য (আগের সাইটের মতো) */
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(30,18,8,.82) 0%, rgba(59,42,29,.62) 45%, rgba(176,78,38,.42) 100%);
+}
+.hero-content { position: relative; z-index: 2; padding-top: 88px; color: #fff7ec; max-width: 1120px; }
+.hero-badge {
+  display: inline-block; background: rgba(176, 78, 38, 0.92); color: #fff7ec;
+  padding: 6px 16px; border-radius: 999px; font-size: 14px; margin-bottom: 14px;
+}
+.hero h1 { font-size: 44px; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,.3); }
+.hero-tagline { font-size: 19px; margin-top: 8px; opacity: 0.95; }
+.hero-tagline-en { font-size: 13px; opacity: 0.7; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.hero-feats { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 14px; opacity: 0.9; }
+.hero-feats span::before { content: "✦ "; color: #e9b48c; }
+
+/* ---------- ৫. সেকশনের সাধারণ স্টাইল ---------- */
+.section { padding: 64px 0; }
+.section-alt { background: var(--muted); }
+/* আল্পনার মতো ডট প্যাটার্ন (আগের সাইটের alpona-pattern) */
+.alpona-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(176, 78, 38, 0.10) 1.5px, transparent 0);
+  background-size: 22px 22px;
+}
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 34px; }
+.overline { color: var(--primary); font-weight: 600; letter-spacing: 1px; font-size: 13px; text-transform: uppercase; }
+.section-head h2 { font-size: 32px; font-weight: 700; margin: 4px 0 6px; }
+.section-sub { color: var(--muted-fg); font-size: 15px; }
+.muted { color: var(--muted-fg); font-size: 13px; }
+
+/* ---------- ৬. মিল্লি ফিচার সেকশন ---------- */
+.milani-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr; gap: 26px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 22px; overflow: hidden; box-shadow: var(--shadow);
+}
+.milani-photo { position: relative; min-height: 300px; }
+.milani-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.milani-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(74, 107, 78, 0.92); color: #f2f7f0;
+  padding: 5px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+}
+.milani-info { padding: 30px 30px 26px; }
+.milani-info h2 { font-size: 28px; margin: 2px 0 10px; }
+.milani-alt { color: var(--primary); font-size: 20px; }
+.alt-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.chip {
+  background: var(--muted); border: 1px solid var(--border);
+  padding: 3px 12px; border-radius: 999px; font-size: 13px; color: #6b4a2e;
+}
+.milani-history { color: #55402e; font-size: 15px; margin-bottom: 14px; }
+.ing-title { margin-bottom: 6px; font-size: 16px; }
+/* উপকরণের তালিকা — দুই কলামে */
+.ing-list {
+  list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 5px 14px;
+  margin-bottom: 18px;
+}
+.ing-list li { font-size: 14px; color: #55402e; padding-left: 18px; position: relative; }
+.ing-list li::before { content: "✦"; position: absolute; left: 0; color: var(--primary); font-size: 11px; top: 4px; }
+.milani-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+/* ---------- ৭. পরিমাণ স্টেপার (− ১ +) ---------- */
+.stepper {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--muted); border: 1px solid var(--border); border-radius: 10px;
+  padding: 4px;
+}
+.stepper button {
+  width: 32px; height: 32px; border: none; border-radius: 8px;
+  background: var(--card); color: var(--primary);
+  font-size: 18px; font-weight: 700; cursor: pointer;
+}
+.stepper button:hover { background: var(--secondary); }
+.stepper span { min-width: 40px; text-align: center; font-weight: 700; font-size: 16px; }
+
+/* ---------- ৮. পণ্যের কার্ড ---------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 26px; }
+.filter-chip {
+  border: 1.5px solid var(--border); background: var(--card); color: #6b4a2e;
+  padding: 8px 20px; border-radius: 999px; font-family: inherit;
+  font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s;
+}
+.filter-chip:hover { border-color: var(--primary); color: var(--primary); }
+.filter-chip.active { background: var(--primary); border-color: var(--primary); color: var(--primary-fg); }
+
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.product-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.product-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; cursor: pointer; }
+.product-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.product-card:hover .product-thumb img { transform: scale(1.05); }
+.cat-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(176, 78, 38, 0.9); color: var(--primary-fg);
+  padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+}
+.detail-info .cat-badge { position: static; display: inline-block; margin-bottom: 8px; }
+.product-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.product-name { font-size: 18px; font-weight: 700; cursor: pointer; }
+.product-name:hover { color: var(--primary); }
+.alt-names { font-size: 12px; color: var(--muted-fg); margin: 2px 0 6px; }
+.product-short { font-size: 13.5px; color: #55402e; flex: 1; }
+.product-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.price { font-weight: 700; color: var(--primary); font-size: 15px; }
+.price small { font-weight: 500; color: var(--muted-fg); font-size: 12px; }
+.card-actions { display: flex; gap: 6px; }
+
+/* ---------- ৯. আমাদের গল্প ---------- */
+.story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.story-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; box-shadow: var(--shadow);
+}
+.story-num { font-family: "Noto Serif Bengali", serif; font-size: 34px; font-weight: 800; color: var(--primary); }
+.story-card h3 { font-size: 18px; margin: 4px 0 8px; }
+.story-card p { font-size: 14px; color: #55402e; }
+
+/* ---------- ১০. যোগাযোগ ---------- */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.contact-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px; text-align: center; text-decoration: none; color: var(--fg);
+  box-shadow: var(--shadow); transition: transform 0.2s;
+}
+.contact-card:hover { transform: translateY(-3px); }
+.contact-card.static { cursor: default; }
+.contact-card.static:hover { transform: none; }
+.contact-icon {
+  width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 14px;
+  background: var(--secondary); color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-icon.green { background: #e4efe5; color: var(--green); }
+.contact-icon svg { width: 24px; height: 24px; }
+.contact-card h3 { font-size: 17px; margin-bottom: 4px; }
+.contact-val { font-size: 15px; font-weight: 600; color: var(--primary); }
+
+/* ---------- ১১. ফুটার ---------- */
+.site-footer { background: #2e2015; color: #d9c4a5; padding: 22px 0; margin-top: 20px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; }
+.footer-link {
+  background: none; border: 1px solid rgba(217, 196, 165, 0.4); color: #d9c4a5;
+  padding: 6px 16px; border-radius: 9px; font-family: inherit; font-size: 13px; cursor: pointer;
+}
+.footer-link:hover { border-color: #d9c4a5; }
+
+/* ---------- ১২. মডাল (পপআপ) ---------- */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(30, 18, 8, 0.55); backdrop-filter: blur(3px);
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 30px 14px; overflow-y: auto;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  position: relative; background: var(--card); border-radius: 18px;
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 480px;
+  padding: 26px; animation: pop 0.22s ease;
+}
+.modal-wide { max-width: 900px; }
+.modal-receipt { max-width: 560px; }
+@keyframes pop { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; } }
+.modal-close {
+  position: absolute; top: 12px; right: 12px; z-index: 5;
+  width: 34px; height: 34px; border-radius: 50%; border: none;
+  background: var(--secondary); color: #6b4a2e; font-size: 15px; cursor: pointer;
+}
+.modal-close:hover { background: var(--primary); color: var(--primary-fg); }
+.modal-title { font-size: 22px; margin-bottom: 16px; }
+
+/* ---------- ১৩. পণ্য বিস্তারিত মডাল ---------- */
+.detail-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px; }
+.detail-photo { position: relative; }
+#dMainImg { width: 100%; aspect-ratio: 16/11; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+.thumb-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.thumb {
+  width: 64px; height: 48px; object-fit: cover; border-radius: 8px; cursor: pointer;
+  border: 2px solid transparent; opacity: 0.75;
+}
+.thumb.active { border-color: var(--primary); opacity: 1; }
+.detail-info h2 { font-size: 26px; margin-bottom: 4px; }
+.detail-alt { font-size: 13px; color: var(--muted-fg); margin-bottom: 12px; }
+.detail-alt b { color: #6b4a2e; }
+.detail-sub { color: var(--primary); font-size: 15px; margin: 12px 0 6px; }
+.detail-history { font-size: 14.5px; color: #55402e; text-align: justify; }
+.detail-price {
+  margin-top: 14px; background: var(--muted); border: 1px dashed var(--primary);
+  padding: 9px 14px; border-radius: 10px; font-size: 15px;
+}
+.detail-price b { color: var(--primary); }
+.detail-actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+
+/* ---------- ১৪. অর্ডার ফর্ম ---------- */
+.order-summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--muted); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 16px; margin-bottom: 10px;
+}
+.order-summary b { font-size: 16px; }
+.order-qty { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.order-total { font-weight: 700; color: var(--primary); margin-bottom: 12px; font-size: 15px; }
+.field { display: block; margin-bottom: 12px; }
+.field span { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 5px; }
+.field i { color: var(--danger); font-style: normal; }
+.field input, .field textarea {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--fg);
+  background: #fff; border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 10px 13px; outline: none; transition: border-color 0.15s; resize: vertical;
+}
+.field input:focus, .field textarea:focus { border-color: var(--primary); }
+.form-error { color: var(--danger); font-size: 13.5px; font-weight: 600; margin-bottom: 10px; }
+.form-hint { color: var(--muted-fg); font-size: 12.5px; text-align: center; margin-top: 10px; }
+
+/* ---------- ১৫. রসিদ ---------- */
+.receipt {
+  background: #fff; color: var(--fg); border: 2px solid var(--primary);
+  border-radius: 12px; padding: 24px 26px; font-size: 14.5px;
+}
+.r-head { text-align: center; border-bottom: 2px double var(--primary); padding-bottom: 10px; margin-bottom: 12px; }
+.r-head h2 { font-size: 22px; color: var(--primary); }
+.r-head p { font-size: 12.5px; color: #6b4a2e; margin: 2px 0; }
+.r-title {
+  background: var(--primary); color: var(--primary-fg); text-align: center;
+  padding: 4px; border-radius: 7px; font-weight: 600; letter-spacing: 1px;
+  margin: 10px 0 14px; font-size: 14px;
+}
+.r-row { display: flex; justify-content: space-between; gap: 12px; margin: 5px 0; }
+.r-row span { color: #6b4a2e; }
+.r-row b { font-weight: 600; text-align: right; }
+.r-addr { max-width: 65%; }
+.r-sep { border-top: 1px dashed var(--border); margin: 10px 0; }
+.receipt table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+.receipt th, .receipt td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; }
+.receipt th { background: var(--secondary); font-weight: 600; }
+.receipt td.num { text-align: right; }
+.r-total {
+  display: flex; justify-content: space-between; font-size: 17px; font-weight: 700;
+  background: var(--secondary); padding: 9px 12px; border-radius: 8px;
+}
+.r-note {
+  background: var(--bg); border: 1px dashed var(--primary);
+  border-radius: 8px; padding: 8px 12px; margin: 12px 0; font-size: 13px;
+}
+.r-info { font-size: 12.5px; color: #6b4a2e; margin-top: 10px; }
+.r-sign { display: flex; justify-content: space-between; margin-top: 30px; font-size: 13px; }
+.r-sign span { border-top: 1px solid var(--fg); padding-top: 4px; min-width: 130px; text-align: center; }
+.r-thanks { text-align: center; margin-top: 14px; color: var(--green); font-weight: 700; }
+.receipt-actions {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 16px;
+}
+
+/* ---------- ১৬. অ্যাডমিন টেবিল ---------- */
+.admin-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.admin-btns { display: flex; gap: 8px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 760px; }
+.admin-table th {
+  background: var(--secondary); padding: 10px 12px; text-align: left;
+  font-weight: 600; white-space: nowrap;
+}
+.admin-table td { padding: 9px 12px; border-top: 1px solid var(--border); vertical-align: top; }
+.admin-table tr:hover td { background: var(--muted); }
+
+/* ---------- ১৭. টোস্ট (ছোট মেসেজ) ---------- */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  background: var(--fg); color: var(--bg); padding: 12px 20px;
+  border-radius: 12px; font-size: 14px; font-weight: 500;
+  opacity: 0; pointer-events: none; transform: translateY(10px);
+  transition: all 0.25s; box-shadow: var(--shadow-lg);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ---------- ১৮. প্রিন্ট — শুধু রসিদ প্রিন্ট হবে ---------- */
+#printRoot { display: none; }
+@media print {
+  /* পর্দার সবকিছু লুকিয়ে শুধু printRoot-এর ভেতরের রসিদ দেখানো */
+  body.printing > *:not(#printRoot) { display: none !important; }
+  body.printing #printRoot { display: block !important; }
+  body.printing .receipt {
+    border: 2px solid #b04e26; border-radius: 0; margin: 0;
+    max-width: 100%; box-shadow: none;
+  }
+}
+
+/* ---------- ১৯. মোবাইলের জন্য সাইজ বদল ---------- */
+@media (max-width: 900px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-grid, .contact-grid { grid-template-columns: 1fr; }
+  .milani-grid { grid-template-columns: 1fr; }
+  .milani-photo { min-height: 220px; }
+  .detail-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .hero { height: 520px; }
+  .hero h1 { font-size: 32px; }
+  .hero-content { padding-top: 60px; }
+  /* মোবাইল মেনু */
+  .nav-toggle { display: block; }
+  .main-nav {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--card); border-bottom: 1px solid var(--border);
+    flex-direction: column; padding: 10px 16px; box-shadow: var(--shadow-lg);
+  }
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 12px 14px; }
+  /* মোবাইলে ফোন নম্বরের লেখা ছোট করা */
+  .ph-full { display: none; }
+  .product-grid { grid-template-columns: 1fr; }
+  .section { padding: 46px 0; }
+  .section-head h2 { font-size: 26px; }
+  .ing-list { grid-template-columns: 1fr; }
+  .modal-backdrop { padding: 16px 10px; }
+  .modal { padding: 20px 16px; }
+  .receipt { padding: 18px 16px; }
+  .r-addr { max-width: 100%; }
+  .footer-inner { justify-content: center; text-align: center; }
+}
+
+/* ---------- ১৯. অ্যাডমিন এডিটর (editor.js) ---------- */
+.admin-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.atab {
+  font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+  padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--fg); transition: all 0.15s;
+}
+.atab:hover { border-color: var(--primary); color: var(--primary); }
+.atab.active { background: var(--primary); border-color: var(--primary); color: var(--primary-fg); }
+.draft-bar { background: #fff3d6; border: 1px solid #e8c36a; color: #6b4a00; padding: 9px 13px; border-radius: 10px; font-size: 13.5px; margin-bottom: 12px; }
+.plist { display: flex; flex-direction: column; gap: 8px; }
+.prow { display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+.prow > img { width: 58px; height: 58px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.pinfo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pinfo b { font-size: 15px; }
+.pinfo small { color: var(--muted-fg); font-size: 12.5px; }
+.pbtns { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+.pf-title { font-family: inherit; font-size: 18px; margin-bottom: 12px; color: var(--primary); }
+.pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.field select {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--fg); background: #fff;
+  border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 13px;
+}
+.pf-imgblock { margin: 6px 0 16px; }
+.pf-imgblock .lbl { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 7px; }
+.pf-main { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pf-main img { width: 150px; height: 100px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
+.noimg { width: 150px; height: 100px; border-radius: 10px; border: 2px dashed var(--border); display: grid; place-items: center; color: var(--muted-fg); font-size: 13px; }
+.gal-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.gthumb { position: relative; width: 90px; height: 64px; }
+.gthumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+.gthumb button {
+  position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 50%;
+  border: none; background: var(--danger); color: #fff; font-size: 12px; cursor: pointer; line-height: 1;
+}
+.filebtn { cursor: pointer; display: inline-block; }
+.pf-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.texts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.pub-note { font-size: 14px; margin-bottom: 12px; }
+.pub-log { display: none; white-space: pre-wrap; background: #2b1d12; color: #f6e8d2; border-radius: 10px; padding: 12px; margin-top: 12px; font-size: 13px; font-family: inherit; }
+@media (max-width: 640px) {
+  .pf-grid, .texts-grid { grid-template-columns: 1fr; }
+  .prow { flex-wrap: wrap; }
+  .pbtns { width: 100%; justify-content: flex-start; }
+}
+
+/* ---------- ২০. অর্ডার ধাপ ২ (ফর্ম জমার পর রসিদ) ---------- */
+.step2-box { padding: 4px 0; }
+.step2-no { text-align: center; margin-bottom: 10px; font-size: 15px; }
+.step2-list { margin: 0 0 14px 20px; line-height: 1.7; font-size: 14.5px; }
+.step2-sub { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.orders-note { background: #eef6ee; border: 1px solid #bcd8bc; color: #2b4a2b; padding: 9px 13px; border-radius: 10px; font-size: 13px; margin-bottom: 12px; }
+.tpl-help{font-size:13px;margin:4px 0 8px}.tpl-help ol{margin:6px 0 6px 18px;line-height:1.6}
+
+.step2-help { font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
+.form-frame-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; margin-bottom: 12px; }
+.form-frame { display: block; width: 100%; height: 60vh; min-height: 380px; border: 0; }
