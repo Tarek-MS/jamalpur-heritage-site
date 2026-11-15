@@ -56,62 +56,66 @@ let LANG = "bn"; // "bn" = বাংলা (ডিফল্ট), "en" = English
    HTML-এ data-i18n="কী" দেওয়া ঘরে এই লেখাগুলো বসে (applyLang)। */
 const I18N = {
   /* ---- ন্যাভবার / ফুটার ---- */
-  navProducts:   { bn: "পণ্য",        en: "Products" },
-  navMilani:     { bn: "মিলি",        en: "Milli" },
-  navHeritage:   { bn: "আমাদের গল্প", en: "Our Story" },
-  navContact:    { bn: "যোগাযোগ",     en: "Contact" },
-  adminBtn:      { bn: "অ্যাডমিন",    en: "Admin" },
+  navProducts: { bn: "পণ্য", en: "Products" },
+  navMilani: { bn: "মিলি", en: "Milli" },
+  navHeritage: { bn: "আমাদের গল্প", en: "Our Story" },
+  navContact: { bn: "যোগাযোগ", en: "Contact" },
+  adminBtn: { bn: "অ্যাডমিন", en: "Admin" },
   /* ---- হিরো ---- */
-  heroBtnProducts: { bn: "পণ্য দেখুন",  en: "View Products" },
-  heroBtnMilani:   { bn: "মিলির গল্প",  en: "Milli's Story" },
+  heroBtnProducts: { bn: "পণ্য দেখুন", en: "View Products" },
+  heroBtnMilani: { bn: "মিলির গল্প", en: "Milli's Story" },
   /* ---- পণ্যের কার্ড ও বাটন ---- */
-  detailsBtn:      { bn: "বিস্তারিত",        en: "Details" },
-  preOrderShort:   { bn: "প্রি-অর্ডার",       en: "Pre-order" },
-  interestedShort: { bn: "ইন্টারেস্টেড",     en: "Interested" },
-  preOrderBtn:     { bn: "প্রি-অর্ডার করুন",  en: "Pre-order Now" },
-  interestedBtn:   { bn: "ইন্টারেস্টেড",     en: "Interested" },
-  callBtn:         { bn: "ফোন করুন",        en: "Call Now" },
-  alsoKnown:       { bn: "প্রচলিত নাম:",     en: "Also known as:" },
-  emptyCat:        { bn: "এই সেকশনে এখনো কোনো পণ্য নেই।", en: "No products in this section yet." },
+  detailsBtn: { bn: "বিস্তারিত", en: "Details" },
+  preOrderShort: { bn: "প্রি-অর্ডার", en: "Pre-order" },
+  interestedShort: { bn: "ইন্টারেস্টেড", en: "Interested" },
+  preOrderBtn: { bn: "প্রি-অর্ডার করুন", en: "Pre-order Now" },
+  interestedBtn: { bn: "ইন্টারেস্টেড", en: "Interested" },
+  callBtn: { bn: "ফোন করুন", en: "Call Now" },
+  alsoKnown: { bn: "প্রচলিত নাম:", en: "Also known as:" },
+  emptyCat: { bn: "এই সেকশনে এখনো কোনো পণ্য নেই।", en: "No products in this section yet." },
   /* ---- প্রি-অর্ডার পপআপ ---- */
-  poTitle:  { bn: "প্রি-অর্ডার",                  en: "Pre-order" },
-  waMsgBtn: { bn: "হোয়াটসঅ্যাপে মেসেজ করুন",     en: "Message on WhatsApp" },
-  gfBtn:    { bn: "গুগল ফর্মে প্রি-অর্ডার করুন", en: "Pre-order via Google Form" },
-  extHint:  { bn: "↗ গুগল ফর্মটি ওয়েবসাইটের বাইরে নতুন ট্যাবে খুলবে", en: "↗ The Google Form opens in a new tab, outside this website" },
+  poTitle: { bn: "প্রি-অর্ডার", en: "Pre-order" },
+  waMsgBtn: { bn: "হোয়াটসঅ্যাপে মেসেজ করুন", en: "Message on WhatsApp" },
+  gfBtn: { bn: "গুগল ফর্মে প্রি-অর্ডার করুন", en: "Pre-order via Google Form" },
+  extHint: { bn: "↗ গুগল ফর্মটি ওয়েবসাইটের বাইরে নতুন ট্যাবে খুলবে", en: "↗ The Google Form opens in a new tab, outside this website" },
   /* ---- ইন্টারেস্টেড ফর্ম ---- */
-  imTitle:    { bn: "ইন্টারেস্টেড — আগ্রহ জানান", en: "Interested — Express Your Interest" },
-  fldName:    { bn: "আপনার নাম",              en: "Your Name" },
-  fldPhone:   { bn: "মোবাইল নম্বর",           en: "Mobile Number" },
+  imTitle: { bn: "ইন্টারেস্টেড — আগ্রহ জানান", en: "Interested — Express Your Interest" },
+  fldName: { bn: "আপনার নাম", en: "Your Name" },
+  fldPhone: { bn: "মোবাইল নম্বর", en: "Mobile Number" },
   fldStudent: { bn: "ছাত্র আইডি (Student ID)", en: "Student ID" },
-  optionalTag:{ bn: "ঐচ্ছিক — না দিলেও হবে",   en: "Optional" },
-  fldQty:     { bn: "কাঙ্ক্ষিত পরিমাণ",         en: "Desired Quantity" },
-  imSubmit:   { bn: "আগ্রহ নিশ্চিত করুন",       en: "Confirm Interest" },
-  phName:     { bn: "যেমন: মোঃ রফিকুল ইসলাম",  en: "e.g. Md. Rafiqul Islam" },
-  phStudent:  { bn: "যেমন: JPS-2026-045",      en: "e.g. JPS-2026-045" },
-  errName:    { bn: "অনুগ্রহ করে আপনার নাম লিখুন।", en: "Please enter your name." },
-  errPhone:   { bn: "মোবাইল নম্বর ঠিক নয় — ১১ ডিজিটের নম্বর (01XXXXXXXXX) লিখুন।", en: "Invalid mobile number — please enter an 11-digit number (01XXXXXXXXX)." },
+  optionalTag: { bn: "ঐচ্ছিক — না দিলেও হবে", en: "Optional" },
+  fldQty: { bn: "কাঙ্ক্ষিত পরিমাণ", en: "Desired Quantity" },
+  imSubmit: { bn: "আগ্রহ নিশ্চিত করুন", en: "Confirm Interest" },
+  phName: { bn: "যেমন: মোঃ রফিকুল ইসলাম", en: "e.g. Md. Rafiqul Islam" },
+  phStudent: { bn: "যেমন: JPS-2026-045", en: "e.g. JPS-2026-045" },
+  errName: { bn: "অনুগ্রহ করে আপনার নাম লিখুন।", en: "Please enter your name." },
+  errPhone: { bn: "মোবাইল নম্বর ঠিক নয় — ১১ ডিজিটের নম্বর (01XXXXXXXXX) লিখুন।", en: "Invalid mobile number — please enter an 11-digit number (01XXXXXXXXX)." },
   errStudent: { bn: "ছাত্র আইডি ঠিক নয় — অন্তত ২ অক্ষরের আইডি লিখুন।", en: "Student ID looks too short — please enter at least 2 characters." },
   /* ---- রসিদ ---- */
-  rcptNo:      { bn: "রসিদ নং",   en: "Receipt No" },
-  rcptDate:    { bn: "তারিখ",     en: "Date" },
-  rcptName:    { bn: "নাম",       en: "Name" },
-  rcptMobile:  { bn: "মোবাইল",    en: "Mobile" },
+  rcptNo: { bn: "রসিদ নং", en: "Receipt No" },
+  rcptDate: { bn: "তারিখ", en: "Date" },
+  rcptName: { bn: "নাম", en: "Name" },
+  rcptMobile: { bn: "মোবাইল", en: "Mobile" },
   rcptStudent: { bn: "ছাত্র আইডি", en: "Student ID" },
-  rcptProduct: { bn: "পণ্য:",     en: "Product:" },
-  rcptQty:     { bn: "পরিমাণ:",   en: "Quantity:" },
-  phonePrefix: { bn: "ফোন:",      en: "Phone:" },
-  rcptThanks:  { bn: "আমাদের ঐতিহ্যে আগ্রহ দেখানোর জন্য ধন্যবাদ!", en: "Thank you for your interest in our heritage!" },
-  rcptBtnDl:    { bn: "ছবি হিসেবে ডাউনলোড", en: "Download as Image" },
-  rcptBtnWa:    { bn: "হোয়াটসঅ্যাপে পাঠান",  en: "Send via WhatsApp" },
-  rcptBtnClose: { bn: "বন্ধ",               en: "Close" },
-  rcptHint:  { bn: "প্রথমে \"ছবি হিসেবে ডাউনলোড\" চেপে ছবিটি সেভ করুন, তারপর \"হোয়াটসঅ্যাপে পাঠান\" চেপে ছবিটি মেসেজে সংযুক্ত (attach) করে পাঠান।",
-               en: "First tap \"Download as Image\" to save the picture, then tap \"Send via WhatsApp\" and attach the image to your message." },
-  rcptNote:  { bn: "✦ এই রসিদ আপনার আগ্রহ নিশ্চিত করার প্রমাণ। ছবিটি ডাউনলোড করে আমাদের হোয়াটসঅ্যাপে ({phone}) পাঠান — আমরা দ্রুত আপনার সাথে যোগাযোগ করব।",
-               en: "✦ This receipt confirms your interest. Please download the image and send it to our WhatsApp ({phone}) — we will contact you soon." },
+  rcptProduct: { bn: "পণ্য:", en: "Product:" },
+  rcptQty: { bn: "পরিমাণ:", en: "Quantity:" },
+  phonePrefix: { bn: "ফোন:", en: "Phone:" },
+  rcptThanks: { bn: "আমাদের ঐতিহ্যে আগ্রহ দেখানোর জন্য ধন্যবাদ!", en: "Thank you for your interest in our heritage!" },
+  rcptBtnDl: { bn: "ছবি হিসেবে ডাউনলোড", en: "Download as Image" },
+  rcptBtnWa: { bn: "হোয়াটসঅ্যাপে পাঠান", en: "Send via WhatsApp" },
+  rcptBtnClose: { bn: "বন্ধ", en: "Close" },
+  rcptHint: {
+    bn: "প্রথমে \"ছবি হিসেবে ডাউনলোড\" চেপে ছবিটি সেভ করুন, তারপর \"হোয়াটসঅ্যাপে পাঠান\" চেপে ছবিটি মেসেজে সংযুক্ত (attach) করে পাঠান।",
+    en: "First tap \"Download as Image\" to save the picture, then tap \"Send via WhatsApp\" and attach the image to your message."
+  },
+  rcptNote: {
+    bn: "✦ এই রসিদ আপনার আগ্রহ নিশ্চিত করার প্রমাণ। ছবিটি ডাউনলোড করে আমাদের হোয়াটসঅ্যাপে ({phone}) পাঠান — আমরা দ্রুত আপনার সাথে যোগাযোগ করব।",
+    en: "✦ This receipt confirms your interest. Please download the image and send it to our WhatsApp ({phone}) — we will contact you soon."
+  },
   /* ---- টোস্ট মেসেজ ---- */
   toastInterestOk: { bn: "আগ্রহ নিশ্চিত হয়েছে — রসিদের ছবি ডাউনলোড করুন", en: "Interest confirmed — please download the receipt image" },
-  toastReceiptDl:  { bn: "রসিদের ছবি ডাউনলোড হয়েছে — এখন হোয়াটসঅ্যাপে পাঠান", en: "Receipt image downloaded — now send it on WhatsApp" },
-  toastStorage:    { bn: "স্টোরেজ ভরে গেছে! ছবি ছোট করুন বা কিছু ছবি বাদ দিন, তারপর আবার সেভ করুন।", en: "Storage is full! Use smaller images or remove some, then save again." },
+  toastReceiptDl: { bn: "রসিদের ছবি ডাউনলোড হয়েছে — এখন হোয়াটসঅ্যাপে পাঠান", en: "Receipt image downloaded — now send it on WhatsApp" },
+  toastStorage: { bn: "স্টোরেজ ভরে গেছে! ছবি ছোট করুন বা কিছু ছবি বাদ দিন, তারপর আবার সেভ করুন।", en: "Storage is full! Use smaller images or remove some, then save again." },
   /* ---- ইংরেজি মোডে ঠিকানা (SITE.address বাংলায় এডিট করা, তাই ইংরেজি নিজস্ব) ---- */
   addressFixed: { bn: null, en: "Jamalpur, Mymensingh Division, Bangladesh" },
 };
@@ -192,8 +196,8 @@ function L(p, field) {
 }
 
 /** চালু ভাষায় তারিখ: বাংলায় ১৫ নভেম্বর ২০২৬, দুপুর ০২:৩০ — ইংরেজিতে 15 November 2026, 02:30 PM */
-const EN_MONTHS = ["January","February","March","April","May","June",
-                   "July","August","September","October","November","December"];
+const EN_MONTHS = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
 function fmtDate(d) {
   if (LANG === "en") {
     const h24 = d.getHours();
@@ -201,7 +205,7 @@ function fmtDate(d) {
     let h = h24 % 12; if (h === 0) h = 12;
     const mm = String(d.getMinutes()).padStart(2, "0");
     return d.getDate() + " " + EN_MONTHS[d.getMonth()] + " " + d.getFullYear() +
-           ", " + h + ":" + mm + " " + part;
+      ", " + h + ":" + mm + " " + part;
   }
   return bnDate(d);
 }
@@ -221,7 +225,7 @@ function EDT(key) {
 /** ভাষা বদলানো — পছন্দ মনে রাখা + সাইটের সব লেখা নতুন করে বসানো */
 function setLang(lang) {
   LANG = (lang === "en") ? "en" : "bn";
-  try { localStorage.setItem(LS_LANG, LANG); } catch (e) {}
+  try { localStorage.setItem(LS_LANG, LANG); } catch (e) { }
   // চালু ভাষার বাটন হাইলাইট করা
   document.querySelectorAll(".lang-btn").forEach((b) => b.classList.toggle("active", b.dataset.lang === LANG));
   applyLang();
@@ -806,8 +810,8 @@ const DEFAULT_PRODUCTS = [
    বাকি সেকশন অ্যাডমিন প্যানেল থেকে যোগ/বদল/মুছে ফেলা যায়।
    ============================================================ */
 const DEFAULT_CATEGORIES = [
-  { key: "food",      label: "খাদ্য",       labelEn: "Food" },
-  { key: "craft",     label: "হস্তশিল্প",    labelEn: "Handicrafts" },
+  { key: "food", label: "খাদ্য", labelEn: "Food" },
+  { key: "craft", label: "হস্তশিল্প", labelEn: "Handicrafts" },
   { key: "processed", label: "প্রক্রিয়াজাত", labelEn: "Processed Goods" },
 ];
 // চালু তালিকা — localStorage থেকে বসে (অ্যাডমিন বদলাতে পারে)
@@ -824,15 +828,15 @@ function toBn(num) {
 }
 
 /** বাংলা তারিখ তৈরি: ১৫ নভেম্বর ২০২৬, দুপুর ০২:৩০ */
-const BN_MONTHS = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন",
-                   "জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+const BN_MONTHS = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন",
+  "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
 function bnDate(d) {
   const h24 = d.getHours();
   const part = h24 < 5 ? "রাত" : h24 < 12 ? "সকাল" : h24 < 16 ? "দুপুর" : h24 < 19 ? "বিকাল" : "রাত";
   let h = h24 % 12; if (h === 0) h = 12;
   const mm = String(d.getMinutes()).padStart(2, "0");
   return toBn(d.getDate()) + " " + BN_MONTHS[d.getMonth()] + " " + toBn(d.getFullYear()) +
-         ", " + part + " " + toBn(h) + ":" + toBn(mm);
+    ", " + part + " " + toBn(h) + ":" + toBn(mm);
 }
 
 /** ছোট মেসেজ (টোস্ট) দেখানো — নিচে ডান কোণে ভেসে ওঠে */
@@ -1006,7 +1010,7 @@ function applyContent(c) {
   }
   if (Array.isArray(c.categories)) {
     CATEGORIES = [{ key: "all", label: "সব পণ্য", labelEn: "All Products" },
-                  ...c.categories.map((x) => ({ ...x, labelEn: x.labelEn || "" }))];
+    ...c.categories.map((x) => ({ ...x, labelEn: x.labelEn || "" }))];
   }
 }
 
@@ -1354,7 +1358,7 @@ function createInterest(info) {
   const list = getInterests();
   const today = new Date();
   const ymd = today.getFullYear() + String(today.getMonth() + 1).padStart(2, "0") +
-              String(today.getDate()).padStart(2, "0");
+    String(today.getDate()).padStart(2, "0");
   // আজকের আগ্রহ কয়টা আছে গুনে পরের ক্রম নম্বর
   const seq = list.filter((x) => x.date.startsWith(ymd)).length + 1;
   return {
@@ -1468,10 +1472,10 @@ async function buildReceiptCanvas(r) {
   // সারিগুলোর তালিকা: {label, value} বা {sep: true} = ড্যাশ লাইন
   // ছাত্র আইডি ঐচ্ছিক — না দিলে রসিদে সারিটি আসে না
   const rows = [
-    { label: T("rcptNo"),    value: num(r.no) },
-    { label: T("rcptDate"),  value: fmtDate(new Date(r.date)) },
+    { label: T("rcptNo"), value: num(r.no) },
+    { label: T("rcptDate"), value: fmtDate(new Date(r.date)) },
     { sep: true },
-    { label: T("rcptName"),   value: r.name },
+    { label: T("rcptName"), value: r.name },
     { label: T("rcptMobile"), value: num(r.phone) },
   ];
   if (r.studentId) rows.push({ label: T("rcptStudent"), value: r.studentId });
@@ -1711,7 +1715,7 @@ function openAdmin() {
 function adminLogin() {
   const pin = document.getElementById("aPin").value.trim();
   if (pin === SITE.adminPin) {
-    try { sessionStorage.setItem(A_OK, "1"); } catch (e) {}
+    try { sessionStorage.setItem(A_OK, "1"); } catch (e) { }
     adminEnter();
   } else {
     document.getElementById("aLoginErr").textContent = "পিন ভুল — আবার চেষ্টা করুন।";
@@ -1733,7 +1737,7 @@ function adminEnter() {
 
 /** লগআউট — আবার পিন চাইবে */
 function adminLogout() {
-  try { sessionStorage.removeItem(A_OK); } catch (e) {}
+  try { sessionStorage.removeItem(A_OK); } catch (e) { }
   closeModal("adminModal");
   toast("অ্যাডমিন থেকে বের হয়েছেন");
 }
@@ -2119,7 +2123,7 @@ function renderAdminTable() {
 function deleteInterest(no) {
   if (!confirm("রসিদ " + no + " মুছে ফেলবেন?")) return;
   const list = getInterests().filter((x) => x.no !== no);
-  try { localStorage.setItem(LS_KEY, JSON.stringify(list)); } catch (e) {}
+  try { localStorage.setItem(LS_KEY, JSON.stringify(list)); } catch (e) { }
   renderAdminTable();
   toast("মুছে ফেলা হয়েছে");
 }
@@ -2128,7 +2132,7 @@ function deleteInterest(no) {
 function downloadCSV() {
   const list = getInterests();
   if (!list.length) { toast("কোনো আগ্রহ নেই"); return; }
-  const head = ["রসিদ নং","তারিখ","পণ্য","পরিমাণ","একক","নাম","মোবাইল","ছাত্র আইডি"];
+  const head = ["রসিদ নং", "তারিখ", "পণ্য", "পরিমাণ", "একক", "নাম", "মোবাইল", "ছাত্র আইডি"];
   const rows = list.map((r) => [
     r.no, new Date(r.date).toLocaleString("en-GB"), r.productName, r.qty, r.unit,
     r.name, r.phone, r.studentId,
@@ -2140,7 +2144,7 @@ function downloadCSV() {
   a.href = URL.createObjectURL(blob);
   const d = new Date();
   a.download = "interests-" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") +
-               String(d.getDate()).padStart(2, "0") + ".csv";
+    String(d.getDate()).padStart(2, "0") + ".csv";
   a.click();
   URL.revokeObjectURL(a.href);
   toast("CSV ডাউনলোড হয়েছে");
@@ -2197,7 +2201,7 @@ function downloadBackup() {
   a.href = URL.createObjectURL(blob);
   const d = new Date();
   a.download = "jamalpur-site-backup-" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") +
-               String(d.getDate()).padStart(2, "0") + ".json";
+    String(d.getDate()).padStart(2, "0") + ".json";
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1500);
   toast("ব্যাকআপ ডাউনলোড হয়েছে — নিরাপদে রাখুন");
@@ -2224,7 +2228,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadContent();            // সেভ করা কনটেন্ট (বা ডিফল্ট) বসানো
 
   /* ---- ভাষা প্রস্তুত: শেষবারের পছন্দ মনে রাখা + বাটন চালু ---- */
-  try { if (localStorage.getItem(LS_LANG) === "en") LANG = "en"; } catch (e) {}
+  try { if (localStorage.getItem(LS_LANG) === "en") LANG = "en"; } catch (e) { }
   document.querySelectorAll(".lang-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.lang === LANG);
     b.addEventListener("click", () => setLang(b.dataset.lang));
