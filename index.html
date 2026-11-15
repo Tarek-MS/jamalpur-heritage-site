@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     জামালপুর ঐতিহ্য হাট — index.html
+     ------------------------------------------------------------
+     পেজের কাঠামো (ওপর থেকে নিচে):
+       ১. হেডার (লোগো, মেনু, ভাষা বদল বাংলা/English, ফোন বাটন)
+       ২. হিরো (বড় ছবি + দোকানের নাম)
+       ৩. মিলি/মিলানি বিশেষ অংশ (script.js দিয়ে ভরা হয়)
+       ৪. পণ্যের গ্রিড + সেকশন ফিল্টার (script.js দিয়ে ভরা হয়)
+       ৫. আমাদের গল্প (ঐতিহ্য)
+       ৬. যোগাযোগ
+       ৭. ফুটার (অ্যাডমিন লিংক এখানে)
+       ৮. পপআপ/মডাল:
+          ক) বিস্তারিত      → পণ্যের গল্প, উপকরণ, ছবি (কোনো দাম নেই)
+          খ) প্রি-অর্ডার    → ফোন নম্বর দেখায় + গুগল ফর্ম নতুন ট্যাবে খোলে
+          গ) ইন্টারেস্টেড   → নাম, মোবাইল (বাধ্যতামূলক), ছাত্র আইডি (ঐচ্ছিক), পরিমাণ
+          ঘ) রসিদ          → আগ্রহের রসিদ — ছবি (PNG) হিসেবে ডাউনলোড
+                             + হোয়াটসঅ্যাপে পাঠানোর বাটন
+                             (ছাত্র আইডি না দিলে রসিদে সেই সারিটি থাকে না)
+          ঙ) অ্যাডমিন      → পিন ৭৮৯৪৫৬ — সম্পূর্ণ কন্ট্রোল প্যানেল:
+                             • পণ্য: যোগ / এডিট / মুছুন / সাজানো
+                             • সেকশন: যোগ / এডিট / মুছুন
+                             • হোমপেজের সব লেখা + হিরো ছবি
+                             • সাইট সেটিংস (নাম, ফোন, গুগল ফর্ম…)
+                             • আগ্রহীদের তালিকা + CSV
+                             • ব্যাকআপ (JSON ডাউনলোড / রিসেট)
+     ★ এই সাইটে কোথাও কোনো দাম/মূল্য দেখানো হয় না।
+     ★ ন্যাভবারে "বাংলা | English" — ইংরেজিতে সব লেখা, পণ্যের ইতিহাস-উপকরণ
+       ও রসিদ ইংরেজিতে দেখায় (অনুবাদ script.js-এর I18N/EN_EDIT অংশে)।
+     ★ data-edit="নাম" দেওয়া সব লেখা অ্যাডমিন প্যানেল থেকে বদলানো যায়।
+     ★ data-site="…" দেওয়া ঘরে সাইট সেটিংসের ফোন/ঠিকানা বসে।
+     ডিজাইন: style.css | কাজ: script.js
+     ============================================================ -->
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <!-- মোবাইলে ঠিকমতো দেখানোর জন্য -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>জামালপুর ঐতিহ্য হাট | Jamalpur Heritage Market</title>
+  <meta name="description" content="জামালপুরের ঐতিহ্যবাহী মিলি (মিলানি), পিঠা-মিষ্টি, হস্তশিল্প ও দেশি পণ্য — অনলাইনে আগ্রহ জানান ও প্রি-অর্ডার করুন।">
+
+  <!-- বাংলা ফন্ট: Hind Siliguri (লেখা) + Noto Serif Bengali (শিরোনাম) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- আমাদের ডিজাইন ফাইল -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ ১. হেডার (উপরে আটকে থাকে) ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- লোগো + দোকানের নাম -->
+      <a href="#top" class="brand">
+        <span class="brand-icon">
+          <!-- খাওয়া-দাওয়ার ছোট আইকন (SVG) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 2v8a3 3 0 0 1-6 0V2"/><path d="M13 2v20"/><path d="M6 2v6a3 3 0 0 0 6 0"/><path d="M7.5 8.5V22"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-bn" data-edit="brandNameBn" data-label="লোগোর নাম (বাংলা)">জামালপুর ঐতিহ্য হাট</span>
+          <span class="brand-en" data-edit="brandNameEn" data-label="লোগোর নাম (ইংরেজি)">Jamalpur Heritage Market</span>
+        </span>
+      </a>
+
+      <!-- মোবাইলের মেনু বাটন (হ্যামবার্গার) -->
+      <button id="navToggle" class="nav-toggle" aria-label="মেনু">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+
+      <!-- মেনু লিংক (লেখা data-i18n দিয়ে ভাষা বদলায়) -->
+      <nav id="mainNav" class="main-nav">
+        <a href="#products" data-i18n="navProducts">পণ্য</a>
+        <a href="#milani" data-i18n="navMilani">মিলি</a>
+        <a href="#heritage" data-i18n="navHeritage">আমাদের গল্প</a>
+        <a href="#contact" data-i18n="navContact">যোগাযোগ</a>
+      </nav>
+
+      <!-- ভাষা বদল (বাংলা / English) — ইংরেজি বেছে নিলে পুরো সাইট ইংরেজিতে দেখায়,
+           পছন্দটি localStorage (jph_lang) এ মনে থাকে। কাজ script.js এ setLang() -->
+      <div class="lang-switch" role="group" aria-label="ভাষা বদল / Change language">
+        <button type="button" class="lang-btn active" data-lang="bn">বাংলা</button>
+        <button type="button" class="lang-btn" data-lang="en">English</button>
+      </div>
+
+      <!-- ফোন বাটন (নম্বর সাইট সেটিংস থেকে বদলায়) -->
+      <a href="tel:+8801304542204" data-site="tel" class="btn btn-primary btn-sm header-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="ph-full" data-site="phone-en">01304542204</span>
+        <span class="ph-short" data-edit="headerPhoneShort" data-label="হেডারের ছোট ফোন লেখা (মোবাইলে)">ফোন</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ ২. হিরো — বড় ছবির ওপর দোকানের নাম ============
+         ছবিটিও অ্যাডমিন প্যানেল ("হোমপেজের লেখা" ট্যাব) থেকে বদলানো যায় -->
+    <section class="hero">
+      <img class="hero-img" data-hero-img src="images/hero.jpg" alt="জামালপুরের ঐতিহ্যবাহী খাবার ও হস্তশিল্প">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="hero-badge" data-edit="heroBadge" data-label="হিরোর ছোট ব্যাজ">শতবর্ষ পুরোনো ঐতিহ্যের অনলাইন হাট</span>
+        <h1 data-edit="heroTitle" data-label="হিরোর বড় শিরোনাম">জামালপুর ঐতিহ্য হাট</h1>
+        <p class="hero-tagline" data-edit="heroTagline" data-label="হিরোর বাংলা লেখা">মাটির গন্ধ, পিঠার স্বাদ ও হাতের শিল্প — সব এক ঠিকানায়</p>
+        <p class="hero-tagline-en" data-edit="heroTaglineEn" data-label="হিরোর ইংরেজি লেখা">Traditional food, crafts &amp; heritage products of Jamalpur</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn btn-primary btn-lg" data-i18n="heroBtnProducts">পণ্য দেখুন</a>
+          <a href="#milani" class="btn btn-glass btn-lg" data-i18n="heroBtnMilani">মিলির গল্প</a>
+        </div>
+        <div class="hero-feats">
+          <span data-edit="heroFeat1" data-label="হিরোর বৈশিষ্ট্য ১">ঘরে তৈরি তাজা খাবার</span>
+          <span data-edit="heroFeat2" data-label="হিরোর বৈশিষ্ট্য ২">স্থানীয় কারিগরদের হাতের শিল্প</span>
+          <span data-edit="heroFeat3" data-label="হিরোর বৈশিষ্ট্য ৩">দেশি উপকরণ</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ৩. মিলি (মিলানি) বিশেষ অংশ ============
+         ভেতরের লেখা-ছবি script.js-এর renderMilaniFeature() দিয়ে বসে।
+         কোন পণ্যটি এখানে দেখাবে তা অ্যাডমিনের "সাইট সেটিংস" থেকে বদলানো যায়। -->
+    <section id="milani" class="section alpona-bg">
+      <div class="container">
+        <div id="milaniSection"><!-- JS দিয়ে ভরা হবে --></div>
+      </div>
+    </section>
+
+    <!-- ============ ৪. পণ্যের গ্রিড ============ -->
+    <section id="products" class="section">
+      <div class="container">
+        <!-- সেকশনের শিরোনাম (অ্যাডমিন থেকে বদলানো যায়) -->
+        <div class="section-head">
+          <p class="overline" data-edit="productsOverline" data-label="পণ্য সেকশনের ছোট লেখা">আগ্রহ ও প্রি-অর্ডার</p>
+          <h2 data-edit="productsTitle" data-label="পণ্য সেকশনের শিরোনাম">আমাদের পণ্যসমূহ</h2>
+          <p class="section-sub" data-edit="productsSub" data-label="পণ্য সেকশনের বর্ণনা">পণ্যে ক্লিক করে বিস্তারিত, ঐতিহ্যের গল্প ও উপকরণ দেখুন — পছন্দ হলে প্রি-অর্ডার করুন বা আগ্রহ জানান</p>
+        </div>
+
+        <!-- সেকশন ফিল্টার বাটন (JS দিয়ে তৈরি) -->
+        <div id="filterBar" class="filter-bar"></div>
+
+        <!-- পণ্যের কার্ডগুলো JS দিয়ে বসে -->
+        <div id="productGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ ৫. আমাদের গল্প (ঐতিহ্য) ============ -->
+    <section id="heritage" class="section section-alt alpona-bg">
+      <div class="container">
+        <div class="section-head">
+          <p class="overline" data-edit="heritageOverline" data-label="গল্প সেকশনের ছোট লেখা">আমাদের গল্প</p>
+          <h2 data-edit="heritageTitle" data-label="গল্প সেকশনের শিরোনাম">জামালপুরের ঐতিহ্য</h2>
+        </div>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-num" data-edit="story1Num" data-label="গল্প কার্ড ১ — বড় সংখ্যা">১০০+</span>
+            <h3 data-edit="story1Title" data-label="গল্প কার্ড ১ — শিরোনাম">বছরের ঐতিহ্য</h3>
+            <p data-edit="story1Text" data-label="গল্প কার্ড ১ — লেখা">মিলি বা পিঠালি থেকে ছানার পায়েস — প্রতিটি পণ্য জামালপুরের চরাঞ্চলের শতবর্ষের ভালোবাসা, আতিথেয়তা ও সামাজিক বন্ধনের জীবন্ত গল্প।</p>
+          </div>
+          <div class="story-card">
+            <span class="story-num" data-edit="story2Num" data-label="গল্প কার্ড ২ — বড় সংখ্যা">৫০০+</span>
+            <h3 data-edit="story2Title" data-label="গল্প কার্ড ২ — শিরোনাম">নারী উদ্যোক্তা</h3>
+            <p data-edit="story2Text" data-label="গল্প কার্ড ২ — লেখা">নকশী কাঁথার সুঁই-সুতায় জেলার পাঁচ শতাধিক নারী উদ্যোক্তা আজ স্বাবলম্বী — প্রতিটি কাঁথা মমতায় বোনা এক জীবন্ত স্মৃতিচিহ্ন।</p>
+          </div>
+          <div class="story-card">
+            <span class="story-num" data-edit="story3Num" data-label="গল্প কার্ড ৩ — বড় সংখ্যা">১৬</span>
+            <h3 data-edit="story3Title" data-label="গল্প কার্ড ৩ — শিরোনাম">জিআই ও দেশি পণ্য</h3>
+            <p data-edit="story3Text" data-label="গল্প কার্ড ৩ — লেখা">ছানার পায়েস, নকশী কাঁথার মতো জিআই স্বীকৃত পণ্য থেকে কাঁসা, মৃৎশিল্প, বাঁশ-বেত ও সোনালী আঁশের পণ্য — সব এক ছাদের নিচে।</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ৬. যোগাযোগ ============ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="overline" data-edit="contactOverline" data-label="যোগাযোগের ছোট লেখা">যোগাযোগ</p>
+          <h2 data-edit="contactTitle" data-label="যোগাযোগের শিরোনাম">প্রি-অর্ডার বা জিজ্ঞাসা</h2>
+          <p class="section-sub" data-edit="contactSub" data-label="যোগাযোগের বর্ণনা">যেকোনো পণ্যের প্রি-অর্ডার, ডেলিভারি বা বাল্ক অর্ডারের জন্য সরাসরি কথা বলুন</p>
+        </div>
+        <div class="contact-grid">
+          <a href="tel:+8801304542204" data-site="tel" class="contact-card">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <h3 data-edit="contactPhoneTitle" data-label="যোগাযোগ কার্ড ১ — শিরোনাম">ফোন করুন</h3>
+            <p class="contact-val" data-site="phone-bn">০১৩০৪৫৪২২০৪</p>
+          </a>
+          <a href="https://wa.me/8801304542204" data-site="wa" target="_blank" class="contact-card">
+            <span class="contact-icon green">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </span>
+            <h3 data-edit="contactWaTitle" data-label="যোগাযোগ কার্ড ২ — শিরোনাম">হোয়াটসঅ্যাপ</h3>
+            <p class="contact-val" data-site="phone-bn">০১৩০৪৫৪২২০৪</p>
+          </a>
+          <div class="contact-card static">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3 data-edit="contactAddrTitle" data-label="যোগাযোগ কার্ড ৩ — শিরোনাম">ঠিকানা</h3>
+            <p class="contact-val" data-site="address">জামালপুর, ময়মনসিংহ বিভাগ, বাংলাদেশ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ৭. ফুটার ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="footYear">২০২৬</span> <span data-edit="footerText" data-label="ফুটারের লেখা">জামালপুর ঐতিহ্য হাট — মাটির গন্ধ, পিঠার স্বাদ ও হাতের শিল্প</span></p>
+      <!-- অ্যাডমিন প্যানেল খোলার লিংক (পিন ৭৮৯৪৫৬ লাগবে) -->
+      <button class="footer-link" onclick="openAdmin()" title="অ্যাডমিন প্যানেল — পিন লাগবে" data-i18n="adminBtn">অ্যাডমিন</button>
+    </div>
+  </footer>
+
+  <!-- ============ ৮ক. পণ্য বিস্তারিত পপআপ (দাম ছাড়া) ============ -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" onclick="closeModal('detailModal')" aria-label="বন্ধ">✕</button>
+      <div class="detail-grid">
+        <!-- বাম: ছবি গ্যালারি -->
+        <div class="detail-photo">
+          <img id="dMainImg" src="" alt="">
+          <div id="dThumbs" class="thumb-row"></div>
+        </div>
+        <!-- ডান: লেখা (এখানে কোনো দাম দেখানো হয় না) -->
+        <div class="detail-info">
+          <span class="cat-badge" id="dCat"></span>
+          <h2 id="dName"></h2>
+          <p class="detail-alt" id="dAltRow"><span data-edit="detailAltLabel" data-label="বিস্তারিতে 'প্রচলিত নাম' লেখা">প্রচলিত নাম:</span> <b id="dAlt"></b></p>
+          <h4 class="detail-sub" data-edit="detailHistoryTitle" data-label="বিস্তারিতে ইতিহাসের শিরোনাম">ঐতিহ্য / ইতিহাস</h4>
+          <p class="detail-history" id="dHistory"></p>
+          <h4 class="detail-sub" data-edit="detailIngTitle" data-label="বিস্তারিতে উপকরণের শিরোনাম">উপকরণ</h4>
+          <ul class="ing-list" id="dIngList"></ul>
+          <div class="detail-actions" id="dActions"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ৮খ. প্রি-অর্ডার পপআপ ============
+       নির্দেশনা দেখায়: সরাসরি ফোন করুন, অথবা গুগল ফর্মে যান।
+       গুগল ফর্ম ওয়েবসাইটের বাইরে নতুন ট্যাবে খোলে (target="_blank")।
+       নির্দেশনার লেখাগুলোও অ্যাডমিন প্যানেল থেকে বদলানো যায়। -->
+  <div class="modal-backdrop" id="preOrderModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('preOrderModal')" aria-label="বন্ধ">✕</button>
+      <h2 class="modal-title" data-i18n="poTitle">প্রি-অর্ডার</h2>
+
+      <!-- কোন পণ্য প্রি-অর্ডার করা হবে -->
+      <div class="order-summary">
+        <div>
+          <b id="poName"></b>
+          <p id="poUnit" class="muted"></p>
+        </div>
+      </div>
+
+      <!-- প্রি-অর্ডারের নির্দেশনা (হাইলাইট করা বাক্স) -->
+      <div class="guide-box">
+        <p class="guide-main" data-edit="preOrderGuide" data-label="প্রি-অর্ডারের নির্দেশনা (মূল লেখা)">প্রি অর্ডার করতে চাইলে সরাসরি ০১৩০৪৫৪২২০৪ এই নাম্বারে যোগাযোগ করুন।</p>
+        <p class="guide-sub" data-edit="preOrderGuideSub" data-label="প্রি-অর্ডারের নির্দেশনা (ছোট লেখা)">ফোনে পণ্যের সব খোঁজখবর নিয়ে আপনার প্রি-অর্ডার নিশ্চিত করা হবে।</p>
+      </div>
+
+      <!-- যোগাযোগের বাটনগুলো -->
+      <div class="po-actions">
+        <a class="btn btn-primary btn-block" href="tel:+8801304542204" data-site="tel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          ফোন করুন — <span data-site="phone-bn">০১৩০৪৫৪২২০৪</span>
+        </a>
+        <a class="btn btn-green btn-block" id="poWhatsapp" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <span data-i18n="waMsgBtn">হোয়াটসঅ্যাপে মেসেজ করুন</span>
+        </a>
+        <!-- গুগল ফর্ম: ওয়েবসাইটের বাইরে নতুন ট্যাবে আলাদা করে খোলে -->
+        <a class="btn btn-outline btn-block" id="poGoogleForm" href="https://docs.google.com/forms/d/1XoYf8avbDvanpdrsLoyz1PZA2KkV8rNjdS9AnLYoIzk/viewform" target="_blank" rel="noopener">
+          <span data-i18n="gfBtn">গুগল ফর্মে প্রি-অর্ডার করুন</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+        </a>
+        <p class="ext-hint" data-i18n="extHint">↗ গুগল ফর্মটি ওয়েবসাইটের বাইরে নতুন ট্যাবে খুলবে</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ৮গ. ইন্টারেস্টেড (আগ্রহ) পপআপ ============
+       নাম, মোবাইল, ছাত্র আইডি (বাধ্যতামূলক) ও পরিমাণ নিয়ে
+       আগ্রহের রসিদ তৈরি হয়। -->
+  <div class="modal-backdrop" id="interestModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('interestModal')" aria-label="বন্ধ">✕</button>
+      <h2 class="modal-title" data-i18n="imTitle">ইন্টারেস্টেড — আগ্রহ জানান</h2>
+
+      <!-- কোন পণ্যে আগ্রহ -->
+      <div class="order-summary">
+        <div>
+          <b id="iName"></b>
+          <p id="iUnit" class="muted"></p>
+        </div>
+      </div>
+
+      <!-- কেন আগ্রহ জানাবেন — নির্দেশনা (লেখাগুলো অ্যাডমিন থেকে বদলানো যায়,
+           ইংরেজি মোডে script.js এর EN_EDIT অনুবাদ বসে) -->
+      <div class="guide-box">
+        <p class="guide-main" data-edit="interestGuideTitle" data-label="আগ্রহ ফর্মের মূল প্রশ্ন">আপনি কি আগ্রহী?</p>
+        <ul class="guide-list">
+          <li data-edit="interestReason1" data-label="আগ্রহের কারণ ১">পণ্যটি কিনতে চান</li>
+          <li data-edit="interestReason2" data-label="আগ্রহের কারণ ২">সরাসরি বিস্তারিত জানতে চান</li>
+          <li data-edit="interestReason3" data-label="আগ্রহের কারণ ৩">এখন প্রি-অর্ডার করছেন না, কিন্তু হাটের দিনে কিনতে চান</li>
+        </ul>
+        <p class="guide-sub" data-edit="interestGuideSub" data-label="আগ্রহ ফর্মের ছোট লেখা">যেকোনো কারণেই হোক — নিচের ফর্মে আগ্রহ জানিয়ে দিন, আমরা আপনার সাথে যোগাযোগ করব।</p>
+      </div>
+
+      <!-- আগ্রহীর তথ্যের ফর্ম — নাম ও মোবাইল বাধ্যতামূলক; ছাত্র আইডি ঐচ্ছিক -->
+      <form id="iForm" novalidate>
+        <label class="field">
+          <span><span data-i18n="fldName">আপনার নাম</span> <i>*</i></span>
+          <input type="text" id="iUserName" data-i18n-ph="phName" placeholder="যেমন: মোঃ রফিকুল ইসলাম" required>
+        </label>
+        <label class="field">
+          <span><span data-i18n="fldPhone">মোবাইল নম্বর</span> <i>*</i></span>
+          <input type="tel" id="iUserPhone" placeholder="01XXXXXXXXX" required>
+        </label>
+        <label class="field">
+          <span><span data-i18n="fldStudent">ছাত্র আইডি (Student ID)</span> <i class="opt-tag" data-i18n="optionalTag">ঐচ্ছিক — না দিলেও হবে</i></span>
+          <input type="text" id="iStudentId" data-i18n-ph="phStudent" placeholder="যেমন: JPS-2026-045">
+        </label>
+        <label class="field">
+          <span data-i18n="fldQty">কাঙ্ক্ষিত পরিমাণ</span>
+        </label>
+        <div class="qty-row">
+          <div class="stepper" id="iStepper">
+            <button type="button" data-step="-1">−</button>
+            <span id="iQty">১</span>
+            <button type="button" data-step="1">+</button>
+          </div>
+        </div>
+        <p class="form-error" id="iError"></p>
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="imSubmit">আগ্রহ নিশ্চিত করুন</button>
+        <p class="form-hint" data-edit="interestFormHint" data-label="আগ্রহ ফর্মের নিচের হিন্ট">নিশ্চিত করলে আগ্রহের রসিদ তৈরি হবে — ছবি হিসেবে ডাউনলোড করে হোয়াটসঅ্যাপে পাঠাতে পারবেন।</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ৮ঘ. আগ্রহের রসিদ পপআপ ============
+       রসিদটি "ছবি হিসেবে ডাউনলোড" বাটনে PNG ছবি হয়ে যায়।
+       তারপর হোয়াটসঅ্যাপে ছবিটি সাথে করে মেসেজ পাঠানো যায়। -->
+  <div class="modal-backdrop" id="receiptModal">
+    <div class="modal modal-receipt">
+      <!-- এই rPaper অংশটাই রসিদ — স্ক্রিনে প্রিভিউ দেখায় -->
+      <div class="receipt" id="rPaper">
+        <div class="r-head">
+          <h2 data-site="name-bn">জামালপুর ঐতিহ্য হাট</h2>
+          <p data-site="name-en">Jamalpur Heritage Market</p>
+          <p><span data-site="address">জামালপুর, ময়মনসিংহ বিভাগ, বাংলাদেশ</span> · <span data-i18n="phonePrefix">ফোন:</span> <span data-site="phone-bn">০১৩০৪৫৪২২০৪</span></p>
+        </div>
+        <div class="r-title">আগ্রহের রসিদ / INTEREST RECEIPT</div>
+        <div class="r-row"><span data-i18n="rcptNo">রসিদ নং</span><b id="rOrderNo"></b></div>
+        <div class="r-row"><span data-i18n="rcptDate">তারিখ</span><b id="rDate"></b></div>
+        <div class="r-sep"></div>
+        <div class="r-row"><span data-i18n="rcptName">নাম</span><b id="rName"></b></div>
+        <div class="r-row"><span data-i18n="rcptMobile">মোবাইল</span><b id="rPhone"></b></div>
+        <div class="r-row" id="rStudentRow"><span data-i18n="rcptStudent">ছাত্র আইডি</span><b id="rStudent"></b></div>
+        <div class="r-sep"></div>
+        <div class="r-item">
+          <p><span data-i18n="rcptProduct">পণ্য:</span> <b id="rProduct"></b></p>
+          <p><span data-i18n="rcptQty">পরিমাণ:</span> <b id="rQty"></b></p>
+        </div>
+        <p class="r-info" id="rInfo">✦ এই রসিদ আপনার আগ্রহ নিশ্চিত করার প্রমাণ। ছবিটি ডাউনলোড করে আমাদের হোয়াটসঅ্যাপে (০১৩০৪৫৪২২০৪) পাঠান — আমরা দ্রুত আপনার সাথে যোগাযোগ করব।</p>
+        <p class="r-thanks" data-i18n="rcptThanks">আমাদের ঐতিহ্যে আগ্রহ দেখানোর জন্য ধন্যবাদ!</p>
+      </div>
+      <!-- রসিদের বাটনগুলো -->
+      <div class="receipt-actions">
+        <button class="btn btn-primary" onclick="downloadReceiptImage()" data-i18n="rcptBtnDl">ছবি হিসেবে ডাউনলোড</button>
+        <button class="btn btn-green" onclick="sendReceiptWhatsapp()" data-i18n="rcptBtnWa">হোয়াটসঅ্যাপে পাঠান</button>
+        <button class="btn btn-ghost" onclick="closeModal('receiptModal')" data-i18n="rcptBtnClose">বন্ধ</button>
+      </div>
+      <p class="form-hint" data-i18n="rcptHint">প্রথমে "ছবি হিসেবে ডাউনলোড" চেপে ছবিটি সেভ করুন, তারপর "হোয়াটসঅ্যাপে পাঠান" চেপে ছবিটি মেসেজে সংযুক্ত (attach) করে পাঠান।</p>
+    </div>
+  </div>
+
+  <!-- ============ ৮ঙ. অ্যাডমিন প্যানেল (পিন ৭৮৯৪৫৬) ============
+       সম্পূর্ণ কন্ট্রোল: পণ্য CRUD, সেকশন CRUD, পেজের সব লেখা,
+       সাইট সেটিংস, আগ্রহীদের তালিকা, ব্যাকআপ/রিসেট। -->
+  <div class="modal-backdrop" id="adminModal">
+    <div class="modal modal-admin">
+      <button class="modal-close" onclick="closeModal('adminModal')" aria-label="বন্ধ">✕</button>
+
+      <!-- ধাপ ১: পিন দেওয়া -->
+      <div id="aLogin">
+        <h2 class="modal-title">অ্যাডমিন প্রবেশ</h2>
+        <label class="field">
+          <span>অ্যাডমিন পিন দিন</span>
+          <input type="password" id="aPin" placeholder="৬ ডিজিটের পিন" onkeydown="if(event.key==='Enter')adminLogin()">
+        </label>
+        <p class="form-error" id="aLoginErr"></p>
+        <button class="btn btn-primary btn-block" onclick="adminLogin()">প্রবেশ করুন</button>
+        <p class="form-hint">পিন: ৭৮৯৪৫৬ — প্যানেলে পণ্য, সেকশন, লেখা, সেটিংস সব বদলানো যায়। বিস্তারিত README.txt দেখুন।</p>
+      </div>
+
+      <!-- ধাপ ২: প্যানেল (৬টি ট্যাব) -->
+      <div id="aPanel" style="display:none">
+        <div class="admin-tabs" id="aTabs">
+          <button class="atab active" data-tab="products">পণ্য</button>
+          <button class="atab" data-tab="cats">সেকশন</button>
+          <button class="atab" data-tab="texts">হোমপেজের লেখা</button>
+          <button class="atab" data-tab="site">সাইট সেটিংস</button>
+          <button class="atab" data-tab="interests">আগ্রহীরা</button>
+          <button class="atab" data-tab="backup">ব্যাকআপ</button>
+          <button class="atab atab-logout" onclick="adminLogout()">লগআউট</button>
+        </div>
+
+        <div class="atab-body" id="tab-products"><!-- JS দিয়ে ভরা হয় --></div>
+
+        <div class="atab-body" id="tab-cats" style="display:none"><!-- JS দিয়ে ভরা হয় --></div>
+
+        <div class="atab-body" id="tab-texts" style="display:none"><!-- JS দিয়ে ভরা হয় --></div>
+
+        <div class="atab-body" id="tab-site" style="display:none"><!-- JS দিয়ে ভরা হয় --></div>
+
+        <div class="atab-body" id="tab-interests" style="display:none">
+          <div class="admin-bar">
+            <span id="aCount"></span>
+            <div class="admin-btns">
+              <button class="btn btn-outline btn-sm" onclick="downloadCSV()">CSV ডাউনলোড</button>
+              <button class="btn btn-danger btn-sm" onclick="clearOrders()">সব মুছুন</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>রসিদ নং</th><th>তারিখ</th><th>পণ্য</th><th>পরিমাণ</th>
+                  <th>নাম</th><th>মোবাইল</th><th>ছাত্র আইডি</th><th>কাজ</th>
+                </tr>
+              </thead>
+              <tbody id="aTbody"></tbody>
+            </table>
+          </div>
+          <p class="form-hint" style="text-align:left">"হোয়াটসঅ্যাপ" বাটনে চাপলে সেই ক্রেতার নম্বরে সরাসরি মেসেজ খুলবে। মনে রাখুন — আগ্রহের তালিকা এই ব্রাউজারেই জমা থাকে; ক্রেতার রসিদের ছবিও হোয়াটসঅ্যাপে আসে।</p>
+        </div>
+
+        <div class="atab-body" id="tab-backup" style="display:none"><!-- JS দিয়ে ভরা হয় --></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ছোট মেসেজ (টোস্ট) -->
+  <div id="toast" class="toast"></div>
+
+  <!-- আমাদের সব জাভাস্ক্রিপ্ট -->
+  <script src="script.js"></script>
+</body>
+</html>
