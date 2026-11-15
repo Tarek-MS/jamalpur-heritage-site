@@ -10,8 +10,9 @@
      বর্ডার               #e8d6bc
    ফন্ট: Hind Siliguri (লেখা), Noto Serif Bengali (শিরোনাম)
    অংশগুলোর ক্রম: ভ্যারিয়েবল → সাধারণ → হেডার → হিরো → সেকশন →
-   মিল্লি → পণ্য কার্ড → গল্প → যোগাযোগ → ফুটার → মডাল → রসিদ →
-   অ্যাডমিন টেবিল → টোস্ট → প্রিন্ট → মোবাইল
+   মিলি → পণ্য কার্ড (৩টি বাটন) → গাইড বাক্স → গল্প → যোগাযোগ →
+   ফুটার → মডাল → রসিদ → অ্যাডমিন টেবিল → টোস্ট → মোবাইল
+   ★ এই সাইটে কোনো দাম দেখানো হয় না — তাই দামের কোনো স্টাইল নেই।
    ============================================================ */
 
 /* ---------- ১. রঙের ভ্যারিয়েবল — রঙ বদলাতে চাইলে শুধু এখানে ---------- */
@@ -147,7 +148,7 @@ img { max-width: 100%; display: block; }
 .section-sub { color: var(--muted-fg); font-size: 15px; }
 .muted { color: var(--muted-fg); font-size: 13px; }
 
-/* ---------- ৬. মিল্লি ফিচার সেকশন ---------- */
+/* ---------- ৬. মিলি ফিচার সেকশন ---------- */
 .milani-grid {
   display: grid; grid-template-columns: 1fr 1.15fr; gap: 26px;
   background: var(--card); border: 1px solid var(--border);
@@ -224,10 +225,24 @@ img { max-width: 100%; display: block; }
 .product-name:hover { color: var(--primary); }
 .alt-names { font-size: 12px; color: var(--muted-fg); margin: 2px 0 6px; }
 .product-short { font-size: 13.5px; color: #55402e; flex: 1; }
-.product-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.price { font-weight: 700; color: var(--primary); font-size: 15px; }
-.price small { font-weight: 500; color: var(--muted-fg); font-size: 12px; }
-.card-actions { display: flex; gap: 6px; }
+/* কার্ডের নিচের অংশ — দাম নেই, শুধু ৩টি বাটন: বিস্তারিত / প্রি-অর্ডার / ইন্টারেস্টেড */
+.product-foot { margin-top: 12px; }
+.card-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.card-actions .btn { padding: 8px 6px; font-size: 13.5px; white-space: nowrap; }
+
+/* ---------- ৯ক. গাইড বাক্স (প্রি-অর্ডার ও ইন্টারেস্টেড মডালের নির্দেশনা) ---------- */
+.guide-box {
+  background: var(--muted); border: 1px dashed var(--primary);
+  border-radius: 12px; padding: 14px 16px; margin-bottom: 14px;
+}
+.guide-main { font-weight: 600; font-size: 15px; color: var(--fg); }
+.guide-main b { color: var(--primary); }
+.guide-list { margin: 8px 0 0; padding-left: 20px; font-size: 14px; color: #55402e; }
+.guide-list li { margin-bottom: 3px; }
+.guide-sub { font-size: 13px; color: var(--muted-fg); margin-top: 8px; }
+.po-actions { display: flex; flex-direction: column; gap: 8px; }
+.ext-hint { font-size: 12px; color: var(--muted-fg); text-align: center; }
+.qty-row { margin: -6px 0 14px; }
 
 /* ---------- ৯. আমাদের গল্প ---------- */
 .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -307,11 +322,6 @@ img { max-width: 100%; display: block; }
 .detail-alt b { color: #6b4a2e; }
 .detail-sub { color: var(--primary); font-size: 15px; margin: 12px 0 6px; }
 .detail-history { font-size: 14.5px; color: #55402e; text-align: justify; }
-.detail-price {
-  margin-top: 14px; background: var(--muted); border: 1px dashed var(--primary);
-  padding: 9px 14px; border-radius: 10px; font-size: 15px;
-}
-.detail-price b { color: var(--primary); }
 .detail-actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
 
 /* ---------- ১৪. অর্ডার ফর্ম ---------- */
@@ -321,8 +331,6 @@ img { max-width: 100%; display: block; }
   border-radius: 12px; padding: 12px 16px; margin-bottom: 10px;
 }
 .order-summary b { font-size: 16px; }
-.order-qty { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.order-total { font-weight: 700; color: var(--primary); margin-bottom: 12px; font-size: 15px; }
 .field { display: block; margin-bottom: 12px; }
 .field span { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 5px; }
 .field i { color: var(--danger); font-style: normal; }
@@ -351,20 +359,15 @@ img { max-width: 100%; display: block; }
 .r-row { display: flex; justify-content: space-between; gap: 12px; margin: 5px 0; }
 .r-row span { color: #6b4a2e; }
 .r-row b { font-weight: 600; text-align: right; }
-.r-addr { max-width: 65%; }
 .r-sep { border-top: 1px dashed var(--border); margin: 10px 0; }
-.receipt table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
-.receipt th, .receipt td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; }
-.receipt th { background: var(--secondary); font-weight: 600; }
-.receipt td.num { text-align: right; }
-.r-total {
-  display: flex; justify-content: space-between; font-size: 17px; font-weight: 700;
-  background: var(--secondary); padding: 9px 12px; border-radius: 8px;
+/* রসিদে পণ্য ও পরিমাণের বাক্স (দাম নেই) */
+.r-item {
+  background: var(--secondary); border-radius: 8px; padding: 10px 12px;
+  margin: 10px 0; font-size: 14px;
 }
-.r-note {
-  background: var(--bg); border: 1px dashed var(--primary);
-  border-radius: 8px; padding: 8px 12px; margin: 12px 0; font-size: 13px;
-}
+.r-item p { margin: 2px 0; }
+.r-item span { color: #6b4a2e; }
+.r-item b { color: var(--primary); }
 .r-info { font-size: 12.5px; color: #6b4a2e; margin-top: 10px; }
 .r-sign { display: flex; justify-content: space-between; margin-top: 30px; font-size: 13px; }
 .r-sign span { border-top: 1px solid var(--fg); padding-top: 4px; min-width: 130px; text-align: center; }
@@ -395,21 +398,10 @@ img { max-width: 100%; display: block; }
 }
 .toast.show { opacity: 1; transform: translateY(0); }
 
-/* ---------- ১৮. প্রিন্ট — শুধু রসিদ প্রিন্ট হবে ---------- */
-#printRoot { display: none; }
-@media print {
-  /* পর্দার সবকিছু লুকিয়ে শুধু printRoot-এর ভেতরের রসিদ দেখানো */
-  body.printing > *:not(#printRoot) { display: none !important; }
-  body.printing #printRoot { display: block !important; }
-  body.printing .receipt {
-    border: 2px solid #b04e26; border-radius: 0; margin: 0;
-    max-width: 100%; box-shadow: none;
-  }
-}
-
-/* ---------- ১৯. মোবাইলের জন্য সাইজ বদল ---------- */
+/* ---------- ১৮. মোবাইলের জন্য সাইজ বদল ---------- */
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .card-actions .btn { font-size: 12.5px; padding: 7px 4px; }
   .story-grid, .contact-grid { grid-template-columns: 1fr; }
   .milani-grid { grid-template-columns: 1fr; }
   .milani-photo { min-height: 220px; }
@@ -440,61 +432,3 @@ img { max-width: 100%; display: block; }
   .r-addr { max-width: 100%; }
   .footer-inner { justify-content: center; text-align: center; }
 }
-
-/* ---------- ১৯. অ্যাডমিন এডিটর (editor.js) ---------- */
-.admin-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.atab {
-  font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
-  padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--border);
-  background: var(--card); color: var(--fg); transition: all 0.15s;
-}
-.atab:hover { border-color: var(--primary); color: var(--primary); }
-.atab.active { background: var(--primary); border-color: var(--primary); color: var(--primary-fg); }
-.draft-bar { background: #fff3d6; border: 1px solid #e8c36a; color: #6b4a00; padding: 9px 13px; border-radius: 10px; font-size: 13.5px; margin-bottom: 12px; }
-.plist { display: flex; flex-direction: column; gap: 8px; }
-.prow { display: flex; align-items: center; gap: 12px; padding: 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
-.prow > img { width: 58px; height: 58px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
-.pinfo { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.pinfo b { font-size: 15px; }
-.pinfo small { color: var(--muted-fg); font-size: 12.5px; }
-.pbtns { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
-.pf-title { font-family: inherit; font-size: 18px; margin-bottom: 12px; color: var(--primary); }
-.pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-.field select {
-  width: 100%; font-family: inherit; font-size: 15px; color: var(--fg); background: #fff;
-  border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 13px;
-}
-.pf-imgblock { margin: 6px 0 16px; }
-.pf-imgblock .lbl { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 7px; }
-.pf-main { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.pf-main img { width: 150px; height: 100px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
-.noimg { width: 150px; height: 100px; border-radius: 10px; border: 2px dashed var(--border); display: grid; place-items: center; color: var(--muted-fg); font-size: 13px; }
-.gal-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
-.gthumb { position: relative; width: 90px; height: 64px; }
-.gthumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
-.gthumb button {
-  position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 50%;
-  border: none; background: var(--danger); color: #fff; font-size: 12px; cursor: pointer; line-height: 1;
-}
-.filebtn { cursor: pointer; display: inline-block; }
-.pf-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
-.texts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-.pub-note { font-size: 14px; margin-bottom: 12px; }
-.pub-log { display: none; white-space: pre-wrap; background: #2b1d12; color: #f6e8d2; border-radius: 10px; padding: 12px; margin-top: 12px; font-size: 13px; font-family: inherit; }
-@media (max-width: 640px) {
-  .pf-grid, .texts-grid { grid-template-columns: 1fr; }
-  .prow { flex-wrap: wrap; }
-  .pbtns { width: 100%; justify-content: flex-start; }
-}
-
-/* ---------- ২০. অর্ডার ধাপ ২ (ফর্ম জমার পর রসিদ) ---------- */
-.step2-box { padding: 4px 0; }
-.step2-no { text-align: center; margin-bottom: 10px; font-size: 15px; }
-.step2-list { margin: 0 0 14px 20px; line-height: 1.7; font-size: 14.5px; }
-.step2-sub { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
-.orders-note { background: #eef6ee; border: 1px solid #bcd8bc; color: #2b4a2b; padding: 9px 13px; border-radius: 10px; font-size: 13px; margin-bottom: 12px; }
-.tpl-help{font-size:13px;margin:4px 0 8px}.tpl-help ol{margin:6px 0 6px 18px;line-height:1.6}
-
-.step2-help { font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
-.form-frame-wrap { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; margin-bottom: 12px; }
-.form-frame { display: block; width: 100%; height: 60vh; min-height: 380px; border: 0; }
