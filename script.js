@@ -10,7 +10,7 @@
      ★ ভাষা বদল: ন্যাভবারে "বাংলা | English" বাটন — ইংরেজি বেছে নিলে
        মেনু, বাটন, ফর্ম, রসিদ, ফোন নম্বর ও পণ্যের ইতিহাস-উপকরণ সব
        ইংরেজিতে দেখাবে। পছন্দ localStorage-এ (jph_lang) মনে থাকে।
-     ৬) অ্যাডমিন প্যানেল (পিন: ৭৮৯৪৫৬) — সম্পূর্ণ CRUD:
+     ৬) অ্যাডমিন প্যানেল — সম্পূর্ণ CRUD:
         • পণ্য: যোগ / এডিট / মুছুন / ওপরে-নিচে সাজানো
         • সেকশন (ক্যাটাগরি): যোগ / এডিট / মুছুন
         • হোমপেজের সব লেখা বদলানো + হিরো ছবি আপলোড
@@ -34,7 +34,7 @@ let SITE = {
   phone: "01304542204",                      // ফোন নম্বর (দেশি ফরম্যাট)
   phoneIntl: "8801304542204",                // আন্তর্জাতিক ফরম্যাট (হোয়াটসঅ্যাপে লাগে)
   address: "জামালপুর, ময়মনসিংহ বিভাগ, বাংলাদেশ",
-  adminPin: "789456",                        // ★ অ্যাডমিন পিন — সবসময় এটাই থাকবে (অ্যাডমিন প্যানেল থেকে বদলানো যায় না)
+  adminPin: "112233",                        // ★ অ্যাডমিন পিন (অ্যাডমিন প্যানেল থেকে বদলানো যায় না)
   googleFormUrl: "https://docs.google.com/forms/d/1XoYf8avbDvanpdrsLoyz1PZA2KkV8rNjdS9AnLYoIzk/viewform",
   featuredId: "milani",                      // হোমপেজের বিশেষ পণ্য (মিলি অংশ) — অ্যাডমিন থেকে বদলানো যায়
 };
@@ -56,66 +56,63 @@ let LANG = "bn"; // "bn" = বাংলা (ডিফল্ট), "en" = English
    HTML-এ data-i18n="কী" দেওয়া ঘরে এই লেখাগুলো বসে (applyLang)। */
 const I18N = {
   /* ---- ন্যাভবার / ফুটার ---- */
-  navProducts: { bn: "পণ্য", en: "Products" },
-  navMilani: { bn: "মিলি", en: "Milli" },
-  navHeritage: { bn: "আমাদের গল্প", en: "Our Story" },
-  navContact: { bn: "যোগাযোগ", en: "Contact" },
-  adminBtn: { bn: "অ্যাডমিন", en: "Admin" },
+  navFood:       { bn: "খাবার",       en: "Food" },
+  navProducts:   { bn: "পণ্য",        en: "Products" },
+  navMilani:     { bn: "মিলি",        en: "Milli" },
+  navHeritage:   { bn: "আমাদের গল্প", en: "Our Story" },
+  navContact:    { bn: "যোগাযোগ",     en: "Contact" },
+  adminBtn:      { bn: "অ্যাডমিন",    en: "Admin" },
   /* ---- হিরো ---- */
-  heroBtnProducts: { bn: "পণ্য দেখুন", en: "View Products" },
-  heroBtnMilani: { bn: "মিলির গল্প", en: "Milli's Story" },
+  heroBtnProducts: { bn: "পণ্য দেখুন",  en: "View Products" },
+  heroBtnMilani:   { bn: "মিলির গল্প",  en: "Milli's Story" },
   /* ---- পণ্যের কার্ড ও বাটন ---- */
-  detailsBtn: { bn: "বিস্তারিত", en: "Details" },
-  preOrderShort: { bn: "প্রি-অর্ডার", en: "Pre-order" },
-  interestedShort: { bn: "ইন্টারেস্টেড", en: "Interested" },
-  preOrderBtn: { bn: "প্রি-অর্ডার করুন", en: "Pre-order Now" },
-  interestedBtn: { bn: "ইন্টারেস্টেড", en: "Interested" },
-  callBtn: { bn: "ফোন করুন", en: "Call Now" },
-  alsoKnown: { bn: "প্রচলিত নাম:", en: "Also known as:" },
-  emptyCat: { bn: "এই সেকশনে এখনো কোনো পণ্য নেই।", en: "No products in this section yet." },
+  detailsBtn:      { bn: "বিস্তারিত",        en: "Details" },
+  preOrderShort:   { bn: "প্রি-অর্ডার",       en: "Pre-order" },
+  interestedShort: { bn: "ইন্টারেস্টেড",     en: "Interested" },
+  preOrderBtn:     { bn: "প্রি-অর্ডার করুন",  en: "Pre-order Now" },
+  interestedBtn:   { bn: "ইন্টারেস্টেড",     en: "Interested" },
+  callBtn:         { bn: "ফোন করুন",        en: "Call Now" },
+  alsoKnown:       { bn: "প্রচলিত নাম:",     en: "Also known as:" },
+  emptyCat:        { bn: "এই সেকশনে এখনো কোনো পণ্য নেই।", en: "No products in this section yet." },
   /* ---- প্রি-অর্ডার পপআপ ---- */
-  poTitle: { bn: "প্রি-অর্ডার", en: "Pre-order" },
-  waMsgBtn: { bn: "হোয়াটসঅ্যাপে মেসেজ করুন", en: "Message on WhatsApp" },
-  gfBtn: { bn: "গুগল ফর্মে প্রি-অর্ডার করুন", en: "Pre-order via Google Form" },
-  extHint: { bn: "↗ গুগল ফর্মটি ওয়েবসাইটের বাইরে নতুন ট্যাবে খুলবে", en: "↗ The Google Form opens in a new tab, outside this website" },
+  poTitle:  { bn: "প্রি-অর্ডার",                  en: "Pre-order" },
+  waMsgBtn: { bn: "হোয়াটসঅ্যাপে মেসেজ করুন",     en: "Message on WhatsApp" },
+  gfBtn:    { bn: "গুগল ফর্মে প্রি-অর্ডার করুন", en: "Pre-order via Google Form" },
+  extHint:  { bn: "↗ গুগল ফর্মটি ওয়েবসাইটের বাইরে নতুন ট্যাবে খুলবে", en: "↗ The Google Form opens in a new tab, outside this website" },
   /* ---- ইন্টারেস্টেড ফর্ম ---- */
-  imTitle: { bn: "ইন্টারেস্টেড — আগ্রহ জানান", en: "Interested — Express Your Interest" },
-  fldName: { bn: "আপনার নাম", en: "Your Name" },
-  fldPhone: { bn: "মোবাইল নম্বর", en: "Mobile Number" },
+  imTitle:    { bn: "ইন্টারেস্টেড — আগ্রহ জানান", en: "Interested — Express Your Interest" },
+  fldName:    { bn: "আপনার নাম",              en: "Your Name" },
+  fldPhone:   { bn: "মোবাইল নম্বর",           en: "Mobile Number" },
   fldStudent: { bn: "ছাত্র আইডি (Student ID)", en: "Student ID" },
-  optionalTag: { bn: "ঐচ্ছিক — না দিলেও হবে", en: "Optional" },
-  fldQty: { bn: "কাঙ্ক্ষিত পরিমাণ", en: "Desired Quantity" },
-  imSubmit: { bn: "আগ্রহ নিশ্চিত করুন", en: "Confirm Interest" },
-  phName: { bn: "যেমন: মোঃ রফিকুল ইসলাম", en: "e.g. Md. Rafiqul Islam" },
-  phStudent: { bn: "যেমন: JPS-2026-045", en: "e.g. JPS-2026-045" },
-  errName: { bn: "অনুগ্রহ করে আপনার নাম লিখুন।", en: "Please enter your name." },
-  errPhone: { bn: "মোবাইল নম্বর ঠিক নয় — ১১ ডিজিটের নম্বর (01XXXXXXXXX) লিখুন।", en: "Invalid mobile number — please enter an 11-digit number (01XXXXXXXXX)." },
+  optionalTag:{ bn: "ঐচ্ছিক — না দিলেও হবে",   en: "Optional" },
+  fldQty:     { bn: "কাঙ্ক্ষিত পরিমাণ",         en: "Desired Quantity" },
+  imSubmit:   { bn: "আগ্রহ নিশ্চিত করুন",       en: "Confirm Interest" },
+  phName:     { bn: "যেমন: মোঃ রফিকুল ইসলাম",  en: "e.g. Md. Rafiqul Islam" },
+  phStudent:  { bn: "যেমন: JPS-2026-045",      en: "e.g. JPS-2026-045" },
+  errName:    { bn: "অনুগ্রহ করে আপনার নাম লিখুন।", en: "Please enter your name." },
+  errPhone:   { bn: "মোবাইল নম্বর ঠিক নয় — ১১ ডিজিটের নম্বর (01XXXXXXXXX) লিখুন।", en: "Invalid mobile number — please enter an 11-digit number (01XXXXXXXXX)." },
   errStudent: { bn: "ছাত্র আইডি ঠিক নয় — অন্তত ২ অক্ষরের আইডি লিখুন।", en: "Student ID looks too short — please enter at least 2 characters." },
   /* ---- রসিদ ---- */
-  rcptNo: { bn: "রসিদ নং", en: "Receipt No" },
-  rcptDate: { bn: "তারিখ", en: "Date" },
-  rcptName: { bn: "নাম", en: "Name" },
-  rcptMobile: { bn: "মোবাইল", en: "Mobile" },
+  rcptNo:      { bn: "রসিদ নং",   en: "Receipt No" },
+  rcptDate:    { bn: "তারিখ",     en: "Date" },
+  rcptName:    { bn: "নাম",       en: "Name" },
+  rcptMobile:  { bn: "মোবাইল",    en: "Mobile" },
   rcptStudent: { bn: "ছাত্র আইডি", en: "Student ID" },
-  rcptProduct: { bn: "পণ্য:", en: "Product:" },
-  rcptQty: { bn: "পরিমাণ:", en: "Quantity:" },
-  phonePrefix: { bn: "ফোন:", en: "Phone:" },
-  rcptThanks: { bn: "আমাদের ঐতিহ্যে আগ্রহ দেখানোর জন্য ধন্যবাদ!", en: "Thank you for your interest in our heritage!" },
-  rcptBtnDl: { bn: "ছবি হিসেবে ডাউনলোড", en: "Download as Image" },
-  rcptBtnWa: { bn: "হোয়াটসঅ্যাপে পাঠান", en: "Send via WhatsApp" },
-  rcptBtnClose: { bn: "বন্ধ", en: "Close" },
-  rcptHint: {
-    bn: "প্রথমে \"ছবি হিসেবে ডাউনলোড\" চেপে ছবিটি সেভ করুন, তারপর \"হোয়াটসঅ্যাপে পাঠান\" চেপে ছবিটি মেসেজে সংযুক্ত (attach) করে পাঠান।",
-    en: "First tap \"Download as Image\" to save the picture, then tap \"Send via WhatsApp\" and attach the image to your message."
-  },
-  rcptNote: {
-    bn: "✦ এই রসিদ আপনার আগ্রহ নিশ্চিত করার প্রমাণ। ছবিটি ডাউনলোড করে আমাদের হোয়াটসঅ্যাপে ({phone}) পাঠান — আমরা দ্রুত আপনার সাথে যোগাযোগ করব।",
-    en: "✦ This receipt confirms your interest. Please download the image and send it to our WhatsApp ({phone}) — we will contact you soon."
-  },
+  rcptProduct: { bn: "পণ্য:",     en: "Product:" },
+  rcptQty:     { bn: "পরিমাণ:",   en: "Quantity:" },
+  phonePrefix: { bn: "ফোন:",      en: "Phone:" },
+  rcptThanks:  { bn: "আমাদের ঐতিহ্যে আগ্রহ দেখানোর জন্য ধন্যবাদ!", en: "Thank you for your interest in our heritage!" },
+  rcptBtnDl:    { bn: "ছবি হিসেবে ডাউনলোড", en: "Download as Image" },
+  rcptBtnWa:    { bn: "হোয়াটসঅ্যাপে পাঠান",  en: "Send via WhatsApp" },
+  rcptBtnClose: { bn: "বন্ধ",               en: "Close" },
+  rcptHint:  { bn: "প্রথমে \"ছবি হিসেবে ডাউনলোড\" চেপে ছবিটি সেভ করুন, তারপর \"হোয়াটসঅ্যাপে পাঠান\" চেপে ছবিটি মেসেজে সংযুক্ত (attach) করে পাঠান।",
+               en: "First tap \"Download as Image\" to save the picture, then tap \"Send via WhatsApp\" and attach the image to your message." },
+  rcptNote:  { bn: "✦ এই রসিদ আপনার আগ্রহ নিশ্চিত করার প্রমাণ। ছবিটি ডাউনলোড করে আমাদের হোয়াটসঅ্যাপে ({phone}) পাঠান — আমরা দ্রুত আপনার সাথে যোগাযোগ করব।",
+               en: "✦ This receipt confirms your interest. Please download the image and send it to our WhatsApp ({phone}) — we will contact you soon." },
   /* ---- টোস্ট মেসেজ ---- */
   toastInterestOk: { bn: "আগ্রহ নিশ্চিত হয়েছে — রসিদের ছবি ডাউনলোড করুন", en: "Interest confirmed — please download the receipt image" },
-  toastReceiptDl: { bn: "রসিদের ছবি ডাউনলোড হয়েছে — এখন হোয়াটসঅ্যাপে পাঠান", en: "Receipt image downloaded — now send it on WhatsApp" },
-  toastStorage: { bn: "স্টোরেজ ভরে গেছে! ছবি ছোট করুন বা কিছু ছবি বাদ দিন, তারপর আবার সেভ করুন।", en: "Storage is full! Use smaller images or remove some, then save again." },
+  toastReceiptDl:  { bn: "রসিদের ছবি ডাউনলোড হয়েছে — এখন হোয়াটসঅ্যাপে পাঠান", en: "Receipt image downloaded — now send it on WhatsApp" },
+  toastStorage:    { bn: "স্টোরেজ ভরে গেছে! ছবি ছোট করুন বা কিছু ছবি বাদ দিন, তারপর আবার সেভ করুন।", en: "Storage is full! Use smaller images or remove some, then save again." },
   /* ---- ইংরেজি মোডে ঠিকানা (SITE.address বাংলায় এডিট করা, তাই ইংরেজি নিজস্ব) ---- */
   addressFixed: { bn: null, en: "Jamalpur, Mymensingh Division, Bangladesh" },
 };
@@ -137,6 +134,9 @@ const EN_EDIT = {
   milaniTag: "A century-old tradition",
   milaniIngTitle: "Ingredients",
   milaniAlt: "(Milani)",
+  foodOverline: "Interest & Pre-order",
+  foodTitle: "Our Food",
+  foodSub: "Traditional pithas, sweets and dishes of Jamalpur — tap for details, pre-order if you like",
   productsOverline: "Interest & Pre-order",
   productsTitle: "All Products",
   productsSub: "Tap a product for its story, heritage and ingredients — pre-order it or simply show your interest",
@@ -196,8 +196,8 @@ function L(p, field) {
 }
 
 /** চালু ভাষায় তারিখ: বাংলায় ১৫ নভেম্বর ২০২৬, দুপুর ০২:৩০ — ইংরেজিতে 15 November 2026, 02:30 PM */
-const EN_MONTHS = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+const EN_MONTHS = ["January","February","March","April","May","June",
+                   "July","August","September","October","November","December"];
 function fmtDate(d) {
   if (LANG === "en") {
     const h24 = d.getHours();
@@ -205,7 +205,7 @@ function fmtDate(d) {
     let h = h24 % 12; if (h === 0) h = 12;
     const mm = String(d.getMinutes()).padStart(2, "0");
     return d.getDate() + " " + EN_MONTHS[d.getMonth()] + " " + d.getFullYear() +
-      ", " + h + ":" + mm + " " + part;
+           ", " + h + ":" + mm + " " + part;
   }
   return bnDate(d);
 }
@@ -225,7 +225,7 @@ function EDT(key) {
 /** ভাষা বদলানো — পছন্দ মনে রাখা + সাইটের সব লেখা নতুন করে বসানো */
 function setLang(lang) {
   LANG = (lang === "en") ? "en" : "bn";
-  try { localStorage.setItem(LS_LANG, LANG); } catch (e) { }
+  try { localStorage.setItem(LS_LANG, LANG); } catch (e) {}
   // চালু ভাষার বাটন হাইলাইট করা
   document.querySelectorAll(".lang-btn").forEach((b) => b.classList.toggle("active", b.dataset.lang === LANG));
   applyLang();
@@ -699,7 +699,7 @@ const DEFAULT_PRODUCTS = [
       "পাকা ধানের গোছা",
       "মুঠি বা বিড়া"
     ],
-    "category": "processed",
+    "category": "exhibition",
     "unit": "প্রতি আঁটি",
     "image": "images/dhaner-anti.jpg",
     "gallery": [],
@@ -729,7 +729,7 @@ const DEFAULT_PRODUCTS = [
       "চালনি",
       "ডালি"
     ],
-    "category": "processed",
+    "category": "exhibition",
     "unit": "প্রতি পিস",
     "image": "images/jhuri-kula.jpg",
     "gallery": [],
@@ -760,7 +760,7 @@ const DEFAULT_PRODUCTS = [
       "কলসি",
       "শখের হাঁড়ি"
     ],
-    "category": "processed",
+    "category": "exhibition",
     "unit": "প্রতি পিস",
     "image": "images/hari-kolosh.jpg",
     "gallery": [],
@@ -772,35 +772,6 @@ const DEFAULT_PRODUCTS = [
       "কাঠের চাকা",
       "প্রাকৃতিক বা খনিজ রঙ"
     ]
-  },
-  {
-    "id": "kasa",
-    "nameEn": "Kansa (Bell Metal Utensils)",
-    "altNamesEn": ["Bell metal ware", "Ghati-bati and plates"],
-    "unitEn": "Per piece",
-    "shortEn": "Bell metal plates, bowls, ghati, glasses and badna — shining tokens of hospitality and dignity, an invaluable heirloom of tradition.",
-    "historyEn": "The traditional bell metal plates, bowls, ghati, glasses and badna of Islampur in Jamalpur are a shining token of Bengali hospitality and dignity. Once, from wedding gifts to serving food to special guests, eating on bell metal ware expressed deep respect and love. Eating from these sustainable metal utensils, which have survived generation after generation, is healthy, and their gleaming look fascinates anyone. Even today, having a piece of pure bell metal ware at home means preserving an invaluable heirloom of hereditary tradition.",
-    "ingredientsEn": [
-      "Alloy of copper and tin (fixed ratio of copper and rang)",
-      "Clay moulds",
-      "Coal"
-    ],
-    "name": "কাঁসা (কাঁসার তৈজসপত্র)",
-    "altNames": [
-      "কাঁসার বাসন",
-      "ঘটি-বাটি ও থালা"
-    ],
-    "category": "processed",
-    "unit": "প্রতি পিস",
-    "image": "images/kasa.jpg",
-    "gallery": [],
-    "short": "আতিথেয়তা ও মর্যাদার উজ্জ্বল নিদর্শন কাঁসার থালা-বাটি, ঘটি, গ্লাস ও বদনা — বংশানুক্রমিক ঐতিহ্যের অমূল্য সম্পদ।",
-    "history": "জামালপুরের ইসলামপুরের ঐতিহ্যবাহী কাঁসার থালা-বাটি, ঘটি, গ্লাস ও বদনা বাঙালির আতিথেয়তা ও মর্যাদার এক উজ্জ্বল নিদর্শন। একসময় বিয়ের উপহার থেকে শুরু করে বিশেষ অতিথির পাতে খাবার পরিবেশনে কাঁসার বাসন ব্যবহার করা ছিল গভীর সম্মান ও ভালোবাসার প্রকাশ। প্রজন্মের পর প্রজন্ম ধরে টিকে থাকা এই টেকসই ধাতব বাসনগুলোতে খাবার খাওয়া যেমন স্বাস্থ্যসম্মত, তেমনি এর ঝলমলে রূপ যে কাউকে মুগ্ধ করে। আজও একটি খাঁটি কাঁসার তৈজস ঘরে থাকা মানে বংশানুক্রমিক ঐতিহ্যের এক অমূল্য সম্পদ সংরক্ষণ করা।",
-    "ingredients": [
-      "তামা ও টিনের সংকর ধাতু (তামা ও রাং-এর নির্দিষ্ট অনুপাত)",
-      "মাটির ছাঁচ",
-      "কয়লা"
-    ]
   }
 ];
 /* ============================================================
@@ -810,9 +781,9 @@ const DEFAULT_PRODUCTS = [
    বাকি সেকশন অ্যাডমিন প্যানেল থেকে যোগ/বদল/মুছে ফেলা যায়।
    ============================================================ */
 const DEFAULT_CATEGORIES = [
-  { key: "food", label: "খাদ্য", labelEn: "Food" },
-  { key: "craft", label: "হস্তশিল্প", labelEn: "Handicrafts" },
-  { key: "processed", label: "প্রক্রিয়াজাত", labelEn: "Processed Goods" },
+  { key: "food",      label: "খাদ্য",       labelEn: "Food" },
+  { key: "craft",     label: "হস্তশিল্প",    labelEn: "Handicrafts" },
+  { key: "exhibition", label: "প্রদর্শনী", labelEn: "Exhibition" },
 ];
 // চালু তালিকা — localStorage থেকে বসে (অ্যাডমিন বদলাতে পারে)
 let CATEGORIES = [{ key: "all", label: "সব পণ্য", labelEn: "All Products" }, ...DEFAULT_CATEGORIES];
@@ -828,15 +799,15 @@ function toBn(num) {
 }
 
 /** বাংলা তারিখ তৈরি: ১৫ নভেম্বর ২০২৬, দুপুর ০২:৩০ */
-const BN_MONTHS = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন",
-  "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
+const BN_MONTHS = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন",
+                   "জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
 function bnDate(d) {
   const h24 = d.getHours();
   const part = h24 < 5 ? "রাত" : h24 < 12 ? "সকাল" : h24 < 16 ? "দুপুর" : h24 < 19 ? "বিকাল" : "রাত";
   let h = h24 % 12; if (h === 0) h = 12;
   const mm = String(d.getMinutes()).padStart(2, "0");
   return toBn(d.getDate()) + " " + BN_MONTHS[d.getMonth()] + " " + toBn(d.getFullYear()) +
-    ", " + part + " " + toBn(h) + ":" + toBn(mm);
+         ", " + part + " " + toBn(h) + ":" + toBn(mm);
 }
 
 /** ছোট মেসেজ (টোস্ট) দেখানো — নিচে ডান কোণে ভেসে ওঠে */
@@ -1010,7 +981,7 @@ function applyContent(c) {
   }
   if (Array.isArray(c.categories)) {
     CATEGORIES = [{ key: "all", label: "সব পণ্য", labelEn: "All Products" },
-    ...c.categories.map((x) => ({ ...x, labelEn: x.labelEn || "" }))];
+                  ...c.categories.map((x) => ({ ...x, labelEn: x.labelEn || "" }))];
   }
 }
 
@@ -1099,18 +1070,24 @@ function catLabel(key) {
 /** সব পণ্য গ্রিডে বসানো (ফিল্টার অনুযায়ী) */
 let activeCat = "all"; // এখন কোন ক্যাটাগরি সিলেক্ট করা আছে
 function renderProducts() {
+  const empty = `<p style="grid-column:1/-1;text-align:center;color:#8a6b4f;padding:30px 0;">${T("emptyCat")}</p>`;
+  // খাবার সেকশন — শুধু খাদ্য
+  const foodGrid = document.getElementById("foodGrid");
+  const foods = PRODUCTS.filter((p) => p.category === "food");
+  foodGrid.innerHTML = foods.length ? foods.map(productCardHTML).join("") : empty;
+  const foodSec = document.getElementById("food");
+  if (foodSec) foodSec.classList.toggle("hidden-section", !foods.length);
+  // পণ্য সেকশন — খাবার বাদে বাকি সব
   const grid = document.getElementById("productGrid");
-  const list = activeCat === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.category === activeCat);
-  grid.innerHTML = list.map(productCardHTML).join("");
-  if (!list.length) {
-    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#8a6b4f;padding:30px 0;">${T("emptyCat")}</p>`;
-  }
+  const others = PRODUCTS.filter((p) => p.category !== "food");
+  const list = activeCat === "all" ? others : others.filter((p) => p.category === activeCat);
+  grid.innerHTML = list.length ? list.map(productCardHTML).join("") : empty;
 }
 
 /** ফিল্টার বাটন তৈরি ও ক্লিক হ্যান্ডলার */
 function setupFilters() {
   const bar = document.getElementById("filterBar");
-  bar.innerHTML = CATEGORIES.map((c) =>
+  bar.innerHTML = CATEGORIES.filter((c) => c.key !== "food").map((c) =>
     `<button class="filter-chip${c.key === activeCat ? " active" : ""}" data-cat="${esc(c.key)}">${esc(catLabel(c.key))}</button>`
   ).join("");
   bar.addEventListener("click", (e) => {
@@ -1358,7 +1335,7 @@ function createInterest(info) {
   const list = getInterests();
   const today = new Date();
   const ymd = today.getFullYear() + String(today.getMonth() + 1).padStart(2, "0") +
-    String(today.getDate()).padStart(2, "0");
+              String(today.getDate()).padStart(2, "0");
   // আজকের আগ্রহ কয়টা আছে গুনে পরের ক্রম নম্বর
   const seq = list.filter((x) => x.date.startsWith(ymd)).length + 1;
   return {
@@ -1472,10 +1449,10 @@ async function buildReceiptCanvas(r) {
   // সারিগুলোর তালিকা: {label, value} বা {sep: true} = ড্যাশ লাইন
   // ছাত্র আইডি ঐচ্ছিক — না দিলে রসিদে সারিটি আসে না
   const rows = [
-    { label: T("rcptNo"), value: num(r.no) },
-    { label: T("rcptDate"), value: fmtDate(new Date(r.date)) },
+    { label: T("rcptNo"),    value: num(r.no) },
+    { label: T("rcptDate"),  value: fmtDate(new Date(r.date)) },
     { sep: true },
-    { label: T("rcptName"), value: r.name },
+    { label: T("rcptName"),   value: r.name },
     { label: T("rcptMobile"), value: num(r.phone) },
   ];
   if (r.studentId) rows.push({ label: T("rcptStudent"), value: r.studentId });
@@ -1685,7 +1662,7 @@ function sendReceiptWhatsapp() {
 }
 
 /* ============================================================
-   ১৬) অ্যাডমিন প্যানেল — পিন ৭৮৯৪৫৬ দিয়ে সম্পূর্ণ নিয়ন্ত্রণ
+   ১৬) অ্যাডমিন প্যানেল — পিন দিয়ে সম্পূর্ণ নিয়ন্ত্রণ
    ------------------------------------------------------------
    ফুটারের "অ্যাডমিন" বাটনে চাপলে পিন জানতে চায়।
    পিন দিলে ৬টি ট্যাব:
@@ -1711,11 +1688,11 @@ function openAdmin() {
   else setTimeout(() => document.getElementById("aPin").focus(), 100);
 }
 
-/** পিন মিলিয়ে দেখা — ★ পিন: ৭৮৯৪৫৬ (সবসময় এটাই) */
+/** পিন মিলিয়ে দেখা */
 function adminLogin() {
   const pin = document.getElementById("aPin").value.trim();
   if (pin === SITE.adminPin) {
-    try { sessionStorage.setItem(A_OK, "1"); } catch (e) { }
+    try { sessionStorage.setItem(A_OK, "1"); } catch (e) {}
     adminEnter();
   } else {
     document.getElementById("aLoginErr").textContent = "পিন ভুল — আবার চেষ্টা করুন।";
@@ -1737,7 +1714,7 @@ function adminEnter() {
 
 /** লগআউট — আবার পিন চাইবে */
 function adminLogout() {
-  try { sessionStorage.removeItem(A_OK); } catch (e) { }
+  try { sessionStorage.removeItem(A_OK); } catch (e) {}
   closeModal("adminModal");
   toast("অ্যাডমিন থেকে বের হয়েছেন");
 }
@@ -2123,7 +2100,7 @@ function renderAdminTable() {
 function deleteInterest(no) {
   if (!confirm("রসিদ " + no + " মুছে ফেলবেন?")) return;
   const list = getInterests().filter((x) => x.no !== no);
-  try { localStorage.setItem(LS_KEY, JSON.stringify(list)); } catch (e) { }
+  try { localStorage.setItem(LS_KEY, JSON.stringify(list)); } catch (e) {}
   renderAdminTable();
   toast("মুছে ফেলা হয়েছে");
 }
@@ -2132,7 +2109,7 @@ function deleteInterest(no) {
 function downloadCSV() {
   const list = getInterests();
   if (!list.length) { toast("কোনো আগ্রহ নেই"); return; }
-  const head = ["রসিদ নং", "তারিখ", "পণ্য", "পরিমাণ", "একক", "নাম", "মোবাইল", "ছাত্র আইডি"];
+  const head = ["রসিদ নং","তারিখ","পণ্য","পরিমাণ","একক","নাম","মোবাইল","ছাত্র আইডি"];
   const rows = list.map((r) => [
     r.no, new Date(r.date).toLocaleString("en-GB"), r.productName, r.qty, r.unit,
     r.name, r.phone, r.studentId,
@@ -2144,7 +2121,7 @@ function downloadCSV() {
   a.href = URL.createObjectURL(blob);
   const d = new Date();
   a.download = "interests-" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") +
-    String(d.getDate()).padStart(2, "0") + ".csv";
+               String(d.getDate()).padStart(2, "0") + ".csv";
   a.click();
   URL.revokeObjectURL(a.href);
   toast("CSV ডাউনলোড হয়েছে");
@@ -2201,7 +2178,7 @@ function downloadBackup() {
   a.href = URL.createObjectURL(blob);
   const d = new Date();
   a.download = "jamalpur-site-backup-" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") +
-    String(d.getDate()).padStart(2, "0") + ".json";
+               String(d.getDate()).padStart(2, "0") + ".json";
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1500);
   toast("ব্যাকআপ ডাউনলোড হয়েছে — নিরাপদে রাখুন");
@@ -2228,7 +2205,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadContent();            // সেভ করা কনটেন্ট (বা ডিফল্ট) বসানো
 
   /* ---- ভাষা প্রস্তুত: শেষবারের পছন্দ মনে রাখা + বাটন চালু ---- */
-  try { if (localStorage.getItem(LS_LANG) === "en") LANG = "en"; } catch (e) { }
+  try { if (localStorage.getItem(LS_LANG) === "en") LANG = "en"; } catch (e) {}
   document.querySelectorAll(".lang-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.lang === LANG);
     b.addEventListener("click", () => setLang(b.dataset.lang));
